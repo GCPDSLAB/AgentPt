@@ -1,8 +1,8 @@
-# IA-Agentes-Software
+# specweaver
 
 Deck del seminario **"Principios de IA agéntica para el desarrollo de software"**, del Laboratorio de Inteligencia Artificial de la Universidad Nacional de Colombia sede Manizales.
 
-**Presentación en vivo: https://amalvarezme.github.io/IA-Agentes-Software/**
+**Presentación en vivo: https://amalvarezme.github.io/specweaver/**
 
 Autor: A.M Álvarez-Meza, PhD — Seminario de Investigación, UNAL Manizales.
 
@@ -64,8 +64,8 @@ El deck se adapta a la resolución sin configuración extra:
 No requiere instalación ni build. Cualquier servidor estático sirve:
 
 ```bash
-git clone https://github.com/amalvarezme/IA-Agentes-Software.git
-cd IA-Agentes-Software
+git clone https://github.com/amalvarezme/specweaver.git
+cd specweaver
 python3 -m http.server 8000
 ```
 
