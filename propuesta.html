@@ -2249,15 +2249,111 @@
           </article>
 
           <article
-            class="slide is-wide"
+            class="slide"
             data-index="21"
+            data-module="5"
+            data-tone="magenta"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">22 &middot; UN-SpecWeaver</p>
+              <h2>Con workflow vs. sin workflow: menos tokens por tarea</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Pasos acotados:</strong> cada fase carga solo el
+                  contexto que necesita, no todo el repositorio.
+                </li>
+                <li>
+                  <strong>Sesiones limpias:</strong> cada tarea arranca sin
+                  arrastrar el historial de otra.
+                </li>
+                <li>
+                  <strong>Artefactos dirigidos:</strong> el PRD, las épicas y la
+                  memoria entran como una porción, no como una re-exploración.
+                </li>
+                <li>
+                  <strong>Alineación antes de codear:</strong> el spec se acuerda
+                  con el desarrollador antes de generar cientos de líneas, y
+                  evita el reproceso que más tokens gasta.
+                </li>
+                <li>
+                  <strong>Depende del tamaño del código:</strong> a más
+                  repositorio, más contexto que re-explorar sin workflow —y más
+                  ahorro al acotarlo con él.
+                </li>
+                <li>
+                  <strong>Estimación:</strong> −40 % a −80 % en tokens por tarea,
+                  según el tamaño del proyecto y los supuestos citados; se
+                  validará con un A/B real.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Gráfica de bandas: los tokens por tarea crecen con el tamaño del código. Sin workflow (prompt suelto) la banda sube de unos 150-260 mil en un proyecto pequeño a 0,8-1,2 millones en uno grande; con workflow SPEC-WEAVER la banda sube de 55-95 mil a 160-260 mil. El hueco entre ambas —los tokens ahorrados— se ensancha con el tamaño: una reducción estimada de 40 a 80 por ciento"
+              >
+                <text x="260" y="24" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">TOKENS POR TAREA</text>
+                <text x="260" y="41" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9.5" font-style="italic">estimación · el ahorro crece con el tamaño del código</text>
+
+                <!-- Leyenda -->
+                <rect x="60" y="52" width="12" height="12" rx="3" fill="#CB7C94" />
+                <text x="78" y="62" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">sin workflow</text>
+                <rect x="188" y="52" width="12" height="12" rx="3" fill="#66862E" />
+                <text x="206" y="62" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">con workflow · SPEC-WEAVER</text>
+
+                <!-- Eje Y (referencia) y base -->
+                <line x1="60" y1="300" x2="480" y2="300" stroke="#C8D0DA" stroke-width="1.2" />
+                <text x="52" y="60" text-anchor="end" fill="#8A93A0" font-family="Space Grotesk,sans-serif" font-size="8">1,2 M</text>
+                <text x="52" y="300" text-anchor="end" fill="#8A93A0" font-family="Space Grotesk,sans-serif" font-size="8">0</text>
+
+                <!-- Banda sin workflow (min-max) -->
+                <path d="M110 246.9 L275 173.4 L440 55 L440 136.7 L275 218.3 L110 269.4 Z" fill="#CB7C94" opacity="0.30" />
+                <path d="M110 246.9 L275 173.4 L440 55" stroke="#CB7C94" stroke-width="2" fill="none" />
+                <path d="M110 269.4 L275 218.3 L440 136.7" stroke="#CB7C94" stroke-width="1.4" fill="none" stroke-dasharray="3 3" />
+                <text x="446" y="70" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="800">0,8–1,2 M</text>
+
+                <!-- Banda con workflow (min-max) -->
+                <path d="M110 280.6 L275 265.3 L440 246.9 L440 267.3 L275 277.5 L110 288.8 Z" fill="#66862E" opacity="0.42" />
+                <path d="M110 280.6 L275 265.3 L440 246.9" stroke="#66862E" stroke-width="2" fill="none" />
+                <text x="446" y="252" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="800">160–260 k</text>
+
+                <!-- El hueco = ahorro, que se ensancha -->
+                <line x1="440" y1="140" x2="440" y2="243" stroke="#454F61" stroke-width="1" stroke-dasharray="2 2" />
+                <text x="330" y="205" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9" font-style="italic">el hueco = tokens ahorrados</text>
+
+                <!-- Eje X: tamaño del proyecto -->
+                <text x="110" y="316" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Pequeño</text>
+                <text x="275" y="316" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Mediano</text>
+                <text x="440" y="316" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Grande</text>
+                <text x="260" y="333" text-anchor="middle" fill="#8A93A0" font-family="Space Grotesk,sans-serif" font-size="9">tamaño del código →</text>
+
+                <!-- Reducción estimada -->
+                <text x="260" y="352" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="800">−40 % a −80 % <tspan fill="#5B6472" font-weight="400">· caché de lectura ≈ 0,1× · se validará con A/B real</tspan></text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide is-wide"
+            data-index="22"
             data-module="5"
             data-tone="blue"
           >
             <div class="slide-content">
-              <p class="slide-kicker">22 &middot; Fuentes</p>
+              <p class="slide-kicker">23 &middot; Fuentes</p>
               <h2>Fuentes</h2>
               <ul class="slide-list slide-references">
+                <li>
+                  Anthropic. (2025). <em>Prompt caching</em>. Claude
+                  Developer Platform. Base de la caché de lectura (&asymp;0,1&times;)
+                  que sostiene la estimación de tokens.
+                  <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching"
+                    >https://docs.anthropic.com/&hellip;</a
+                  >
+                </li>
                 <li>
                   Becker, J., Rush, N., Barnes, E., &amp; Rein, D. (2025).
                   <em>Measuring the impact of early-2025 AI on experienced
