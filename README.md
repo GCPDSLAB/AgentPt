@@ -27,6 +27,27 @@ Una presentación estática (HTML + CSS + JS, sin build ni dependencias) de 61 s
 | 11 | Stack y Bibliotecas | gentle-ai y ecosistema |
 | 12 | SetUp y cierre | El stack, por qué CLI, GentlemanDots y cierre |
 
+## Propuesta complementaria (`propuesta.html`)
+
+Deck independiente, en construcción incremental, que desarrolla la propuesta de adopción de agentes de IA en el ciclo de vida de desarrollo de software: motivación, evidencia con métricas citadas, riesgos y la respuesta metodológica (sin nombrar formalmente "Spec-Driven Development", solo como "ingeniería aplicada a la IA") hasta llegar al stack SPEC-WEAVER.
+
+**Presentación en vivo: https://amalvarezme.github.io/specweaver/propuesta.html**
+
+Usa la misma base visual y de navegación (`assets/css/styles.css`, `assets/js/app.js`) que el deck principal, pero es un HTML independiente: no se ejecuta dentro de `index.html` ni viceversa, y no forma parte de sus 12 módulos.
+
+22 slides en 6 módulos:
+
+| # | Módulo | Tema |
+|---|--------|------|
+| 1 | Motivación | Ciclo de vida tradicional y su reconstrucción con IA |
+| 2 | Perfiles en evolución | Perfiles tradicionales, PO/analistas de requerimientos y reparto IA/humano por etapa |
+| 3 | Chat vs Agente | Diferencia chat/agente y benchmarks de agentes de código en el mercado (pagos y gratuitos) |
+| 4 | Evidencia | Estadísticas citadas de productividad y adopción, matices de contexto, efecto amplificador de la IA y riesgos consolidados |
+| 5 | La respuesta | Contexto amplio necesario, ingeniería aplicada a la IA, ecosistema de piezas y vínculo requisitos→código, con capturas reales del flujo brief→PRD→épicas→memoria |
+| 6 | UN-SpecWeaver | El stack: qué herramientas ya se conectan y cuáles están en roadmap |
+
+Cierra siempre con una diapositiva de **Fuentes**, con la cita completa de cada estadística usada en el deck.
+
 ## Demos en vivo
 
 Guías paso a paso en [`demos/`](demos/):
@@ -75,6 +96,7 @@ Abre http://localhost:8000.
 
 ```
 index.html            # Deck completo (todos los slides)
+propuesta.html        # Deck complementario: propuesta de agentes en el SDLC
 assets/css/styles.css # Estilos y tema visual LIA-UNAL
 assets/js/app.js      # Navegación, teclado y contador
 assets/images/        # Logo, diagramas y códigos QR
