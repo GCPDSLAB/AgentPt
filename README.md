@@ -2,7 +2,7 @@
 
 Deck de propuesta y entendimiento sobre la implementación de agentes de IA en el ciclo de vida del desarrollo de software (SDLC), del Laboratorio de Inteligencia Artificial de la Universidad Nacional de Colombia sede Manizales.
 
-Este repositorio es únicamente para `propuesta.html`.
+Este repositorio es únicamente para `index.html`.
 
 ## Qué es
 
@@ -54,12 +54,12 @@ cd AgentPt
 python3 -m http.server 8000
 ```
 
-Abre http://localhost:8000/propuesta.html.
+Abre http://localhost:8000/.
 
 ## Estructura
 
 ```
-propuesta.html         # Deck de la propuesta (22 slides, 6 modulos)
+index.html             # Deck de la propuesta (22 slides, 6 modulos)
 assets/css/styles.css  # Estilos y tema visual compartido
 assets/js/app.js       # Navegacion, teclado y contador
 assets/images/         # Logos, iconos y capturas usadas en las diapositivas
