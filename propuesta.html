@@ -1,0 +1,2414 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Propuesta: agentes en el ciclo de vida del desarrollo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="ambient"></div>
+    <div class="deck-app">
+      <nav class="rail" aria-label="Modulos">
+        <div class="rail-module" data-module="0">
+          <button class="rail-title" data-first="1">1. Motivacion: de fases a bucles</button>
+          <div class="rail-dots" id="dots-0"></div>
+        </div>
+        <div class="rail-module" data-module="1">
+          <button class="rail-title" data-first="3">2. Perfiles en evolucion</button>
+          <div class="rail-dots" id="dots-1"></div>
+        </div>
+        <div class="rail-module" data-module="2">
+          <button class="rail-title" data-first="6">3. Chat vs Agente</button>
+          <div class="rail-dots" id="dots-2"></div>
+        </div>
+        <div class="rail-module" data-module="3">
+          <button class="rail-title" data-first="8">4. Evidencia: que dicen los datos</button>
+          <div class="rail-dots" id="dots-3"></div>
+        </div>
+        <div class="rail-module" data-module="4">
+          <button class="rail-title" data-first="12">5. La respuesta: ingenieria aplicada</button>
+          <div class="rail-dots" id="dots-4"></div>
+        </div>
+        <div class="rail-module" data-module="5">
+          <button class="rail-title" data-first="20">6. UN-SpecWeaver</button>
+          <div class="rail-dots" id="dots-5"></div>
+        </div>
+      </nav>
+
+      <div class="stage-layout">
+        <main class="viewport" id="viewport">
+          <article
+            class="slide is-cover is-active"
+            data-index="0"
+            data-module="cover"
+            data-tone="cyan"
+          >
+            <div class="cover-content">
+              <p class="cover-project">
+                Agentes de IA en el ciclo de vida del desarrollo de software:
+                motivación y propuesta
+              </p>
+              <img
+                class="cover-logo"
+                src="assets/images/logo_labIA.png"
+                alt="Laboratorio de Inteligencia Artificial UNAL"
+              />
+              <p class="cover-meta">
+                <span class="cover-author"
+                  >J.I. Montes-Monsalve, PhD &middot; A.M. &Aacute;lvarez-Meza, PhD</span
+                >
+                <span>Universidad Nacional de Colombia sede Manizales</span>
+                <span class="cover-year">2026</span>
+              </p>
+            </div>
+          </article>
+
+          <!-- M0: 1. Motivacion: de fases a bucles -->
+
+          <article
+            class="slide"
+            data-index="1"
+            data-module="0"
+            data-tone="blue"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">2 &middot; Motivaci&oacute;n</p>
+              <h2>El ciclo de vida tradicional: fases y handoffs</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Fases secuenciales:</strong> requisitos, diseño,
+                  implementación, pruebas, despliegue y mantenimiento. Cada una
+                  con su rol y su entregable.
+                </li>
+                <li>
+                  <strong>Tres estrategias dominantes:</strong> cascada, iterativo/ágil y DevOps con CI-CD.
+                </li>
+                <li>
+                  <strong>Cada frontera es un handoff humano:</strong> un
+                  documento, una reunión y una espera entre fases.
+                </li>
+                <li>
+                  <strong>El costo de corregir crece con la fase:</strong> cuanto más tarde se
+                  detecta un error de requisitos, más caro resulta
+                  corregirlo.
+                </li>
+                <li>
+                  <strong>Feedback lento:</strong> el ciclo de aprendizaje se
+                  mide en semanas o meses, no en minutos.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama del ciclo de vida tradicional del software: seis fases secuenciales con retroalimentacion de semanas a meses"
+              >
+                <defs>
+                  <marker
+                    id="ar-blue"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#4E93B0" />
+                  </marker>
+                  <marker
+                    id="ar-yellow"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#A8781A" />
+                  </marker>
+                  <marker
+                    id="ar-red"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#C55A7B" />
+                  </marker>
+                </defs>
+
+                <text
+                  x="260"
+                  y="20"
+                  text-anchor="middle"
+                  fill="#454F61"
+                  font-family="Space Grotesk,sans-serif"
+                  font-size="11"
+                  letter-spacing="2"
+                >
+                  CICLO DE VIDA TRADICIONAL
+                </text>
+
+                <!-- Fila 1 -->
+                <rect x="40" y="46" width="130" height="46" rx="10" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.5" />
+                <text x="105" y="68" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500">Requisitos</text>
+                <text x="105" y="82" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">negocio + analista</text>
+
+                <rect x="200" y="46" width="130" height="46" rx="10" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.5" />
+                <text x="265" y="68" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500">Diseño</text>
+                <text x="265" y="82" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">arquitectura</text>
+
+                <rect x="360" y="46" width="130" height="46" rx="10" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.5" />
+                <text x="425" y="68" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500">Implementación</text>
+                <text x="425" y="82" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">desarrollo</text>
+
+                <path d="M172 69 H196" stroke="#4E93B0" stroke-width="1.5" marker-end="url(#ar-blue)" />
+                <path d="M332 69 H356" stroke="#4E93B0" stroke-width="1.5" marker-end="url(#ar-blue)" />
+
+                <!-- Conector fila 1 -> fila 2 -->
+                <path d="M425 94 V116 H105 V136" stroke="#4E93B0" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar-blue)" />
+
+                <!-- Fila 2 -->
+                <rect x="40" y="140" width="130" height="46" rx="10" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.5" />
+                <text x="105" y="162" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500">Pruebas / QA</text>
+                <text x="105" y="176" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">verificación</text>
+
+                <rect x="200" y="140" width="130" height="46" rx="10" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.5" />
+                <text x="265" y="162" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500">Despliegue</text>
+                <text x="265" y="176" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">release</text>
+
+                <rect x="360" y="140" width="130" height="46" rx="10" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.5" />
+                <text x="425" y="162" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500">Mantenimiento</text>
+                <text x="425" y="176" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">operación</text>
+
+                <path d="M172 163 H196" stroke="#A8781A" stroke-width="1.5" marker-end="url(#ar-yellow)" />
+                <path d="M332 163 H356" stroke="#A8781A" stroke-width="1.5" marker-end="url(#ar-yellow)" />
+
+                <!-- Retroalimentacion -->
+                <path d="M425 188 V222 H16 V69 H34" stroke="#C55A7B" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar-red)" />
+                <text x="270" y="240" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="10" letter-spacing="1">RETROALIMENTACIÓN: SEMANAS A MESES</text>
+
+                <line x1="16" y1="262" x2="504" y2="262" stroke="#B8C2D0" stroke-width="1" />
+
+                <!-- Estrategias -->
+                <text x="16" y="284" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" letter-spacing="2">ESTRATEGIAS</text>
+                <rect x="16" y="294" width="150" height="30" rx="8" fill="#EDF1F7" stroke="#7189B8" stroke-width="1.2" />
+                <text x="91" y="313" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="11">Cascada</text>
+                <rect x="182" y="294" width="150" height="30" rx="8" fill="#EDF1F7" stroke="#7189B8" stroke-width="1.2" />
+                <text x="257" y="313" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="11">Iterativo / Ágil</text>
+                <rect x="348" y="294" width="156" height="30" rx="8" fill="#EDF1F7" stroke="#7189B8" stroke-width="1.2" />
+                <text x="426" y="313" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="11">DevOps · CI-CD</text>
+
+                <text x="260" y="344" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Cada frontera = handoff humano · corregir tarde cuesta más</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="2"
+            data-module="0"
+            data-tone="green"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">3 &middot; Motivaci&oacute;n</p>
+              <h2>La IA reconstruye el ciclo: de fases a bucles</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Los artefactos se generan, no se redactan:</strong>
+                  specs, código, pruebas y documentación salen en minutos <cite>(Hou et al., 2024)</cite>.
+                </li>
+                <li>
+                  <strong>El cuello de botella se mueve:</strong> deja de estar
+                  en <em>escribir</em> y pasa a estar en
+                  <em>especificar y verificar</em>.
+                </li>
+                <li>
+                  <strong>Las fases se solapan:</strong> un mismo agente cruza
+                  diseño, código y pruebas dentro de un solo bucle, sin handoff
+                  intermedio.
+                </li>
+                <li>
+                  <strong>El feedback pasa de semanas a minutos:</strong> el
+                  ciclo se recorre varias veces al día.
+                </li>
+                <li>
+                  <strong>Aparece una fase nueva:</strong> curar el contexto
+                  —specs, memoria y skills— es ahora trabajo de ingeniería.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama del ciclo de vida reconstruido con IA: bucle de seis etapas alrededor del contexto, con etapas ejecutadas por IA, decididas por el humano y revisadas en conjunto"
+              >
+                <defs>
+                  <marker
+                    id="ar-loop"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#7A8798" />
+                  </marker>
+                </defs>
+
+                <!-- Leyenda -->
+                <rect x="16" y="8" width="10" height="10" rx="3" fill="#66862E" />
+                <text x="32" y="17" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">IA ejecuta</text>
+                <rect x="118" y="8" width="10" height="10" rx="3" fill="#A8781A" />
+                <text x="134" y="17" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Humano decide</text>
+                <rect x="252" y="8" width="10" height="10" rx="3" fill="#4E93B0" />
+                <text x="268" y="17" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Revisión conjunta</text>
+
+                <!-- Nucleo -->
+                <circle cx="260" cy="186" r="58" fill="#EDF1F7" stroke="#4E8F82" stroke-width="1.5" />
+                <text x="260" y="180" text-anchor="middle" fill="#2E6B60" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500">CONTEXTO</text>
+                <text x="260" y="196" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">specs · memoria</text>
+                <text x="260" y="208" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">skills · agentes</text>
+
+                <!-- Nodo 1: Intencion (humano) -->
+                <rect x="200" y="32" width="120" height="36" rx="9" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.5" />
+                <text x="260" y="48" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Intención</text>
+                <text x="260" y="61" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">qué y para quién</text>
+
+                <!-- Nodo 2: Diseno (conjunto) -->
+                <rect x="344" y="96" width="120" height="36" rx="9" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.5" />
+                <text x="404" y="112" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Diseño</text>
+                <text x="404" y="125" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">IA propone, tú eliges</text>
+
+                <!-- Nodo 3: Construccion (IA) -->
+                <rect x="344" y="236" width="120" height="36" rx="9" fill="#EDF1F7" stroke="#66862E" stroke-width="1.5" />
+                <text x="404" y="252" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Construcción</text>
+                <text x="404" y="265" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">código · tests · docs</text>
+
+                <!-- Nodo 4: Verificacion (conjunto) -->
+                <rect x="200" y="302" width="120" height="36" rx="9" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.5" />
+                <text x="260" y="318" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Verificación</text>
+                <text x="260" y="331" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">review del diff</text>
+
+                <!-- Nodo 5: Entrega (humano) -->
+                <rect x="56" y="236" width="120" height="36" rx="9" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.5" />
+                <text x="116" y="252" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Entrega</text>
+                <text x="116" y="265" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">merge · deploy</text>
+
+                <!-- Nodo 6: Exploracion (IA) -->
+                <rect x="56" y="96" width="120" height="36" rx="9" fill="#EDF1F7" stroke="#66862E" stroke-width="1.5" />
+                <text x="116" y="112" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Exploración</text>
+                <text x="116" y="125" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">lee y mapea el repo</text>
+
+                <!-- Flechas del bucle -->
+                <path d="M326 58 L390 92" stroke="#6C7A8C" stroke-width="1.4" marker-end="url(#ar-loop)" />
+                <path d="M404 138 L404 230" stroke="#6C7A8C" stroke-width="1.4" marker-end="url(#ar-loop)" />
+                <path d="M392 278 L326 300" stroke="#6C7A8C" stroke-width="1.4" marker-end="url(#ar-loop)" />
+                <path d="M194 312 L132 278" stroke="#6C7A8C" stroke-width="1.4" marker-end="url(#ar-loop)" />
+                <path d="M116 230 L116 138" stroke="#6C7A8C" stroke-width="1.4" marker-end="url(#ar-loop)" />
+                <path d="M132 92 L194 58" stroke="#6C7A8C" stroke-width="1.4" marker-end="url(#ar-loop)" />
+
+                <!-- Alimentacion del contexto -->
+                <path d="M260 74 V124" stroke="#4E8F82" stroke-width="1.2" stroke-dasharray="3 4" />
+                <path d="M260 296 V248" stroke="#4E8F82" stroke-width="1.2" stroke-dasharray="3 4" />
+
+                <text x="500" y="188" text-anchor="end" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10">minutos</text>
+                <text x="500" y="202" text-anchor="end" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">por vuelta</text>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- M1: 2. Perfiles en evolucion -->
+
+          <article
+            class="slide"
+            data-index="3"
+            data-module="1"
+            data-tone="purple"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">4 &middot; Perfiles en evoluci&oacute;n</p>
+              <h2>Perfiles tradicionales: back-end, front-end, full stack</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Back-end:</strong> APIs, modelo de datos, escalabilidad
+                  e infraestructura. Manda en el servidor.
+                </li>
+                <li>
+                  <strong>Front-end:</strong> interfaz, manejo de estado,
+                  accesibilidad y rendimiento en el navegador.
+                </li>
+                <li>
+                  <strong>Full stack:</strong> cruza las dos puntas, pero rara
+                  vez con la misma profundidad en ambas.
+                </li>
+                <li>
+                  <strong>El límite de la vieja escuela:</strong> el perfil se
+                  optimizó para producir código rápido, y esa es justo la capa
+                  que la IA ya cubre.
+                </li>
+                <li>
+                  <strong>Lo que no se automatiza:</strong> decidir la
+                  arquitectura, poner los límites del sistema y saber qué NO
+                  construir.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama de los perfiles tradicionales de software: front-end, back-end y full stack, con la capa de produccion de codigo ya cubierta por la IA y la capa de criterio que sigue siendo humana"
+              >
+                <defs>
+                  <marker
+                    id="fde1-up"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#B86F24" />
+                  </marker>
+                </defs>
+
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">PERFILES TRADICIONALES</text>
+
+                <!-- Front-end -->
+                <rect x="22" y="30" width="150" height="28" rx="8" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.5" />
+                <text x="97" y="49" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600">Front-end</text>
+                <rect x="22" y="66" width="150" height="22" rx="6" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="97" y="81" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">Interfaz</text>
+                <rect x="22" y="92" width="150" height="22" rx="6" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="97" y="107" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">Estado</text>
+                <rect x="22" y="118" width="150" height="22" rx="6" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="97" y="133" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">Accesibilidad</text>
+
+                <!-- Back-end -->
+                <rect x="185" y="30" width="150" height="28" rx="8" fill="#EDF1F7" stroke="#66862E" stroke-width="1.5" />
+                <text x="260" y="49" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600">Back-end</text>
+                <rect x="185" y="66" width="150" height="22" rx="6" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="260" y="81" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">APIs</text>
+                <rect x="185" y="92" width="150" height="22" rx="6" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="260" y="107" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">Datos</text>
+                <rect x="185" y="118" width="150" height="22" rx="6" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="260" y="133" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">Infraestructura</text>
+
+                <!-- Full stack -->
+                <rect x="348" y="30" width="150" height="28" rx="8" fill="#EDF1F7" stroke="#7189B8" stroke-width="1.5" />
+                <text x="423" y="49" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600">Full stack</text>
+                <rect x="348" y="66" width="150" height="74" rx="6" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" stroke-dasharray="4 4" />
+                <text x="423" y="94" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">Cruza las dos puntas</text>
+                <text x="423" y="112" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">amplitud, no siempre</text>
+                <text x="423" y="125" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">profundidad</text>
+
+                <!-- Flechas hacia la capa cubierta por la IA -->
+                <path d="M97 168 V148" stroke="#B86F24" stroke-width="1.4" marker-end="url(#fde1-up)" />
+                <path d="M260 168 V148" stroke="#B86F24" stroke-width="1.4" marker-end="url(#fde1-up)" />
+                <path d="M423 168 V148" stroke="#B86F24" stroke-width="1.4" marker-end="url(#fde1-up)" />
+
+                <rect x="22" y="172" width="476" height="42" rx="10" fill="#F7E9CC" stroke="#B86F24" stroke-width="1.5" />
+                <text x="260" y="190" text-anchor="middle" fill="#9A5B12" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600">LA IA YA CUBRE ESTA CAPA</text>
+                <text x="260" y="205" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9.5">CRUD · boilerplate · glue code · tests base · migraciones</text>
+
+                <line x1="22" y1="234" x2="498" y2="234" stroke="#B8C2D0" stroke-width="1" />
+
+                <rect x="22" y="248" width="476" height="58" rx="10" fill="#E4EFD3" stroke="#66862E" stroke-width="1.5" />
+                <text x="260" y="268" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600">LO QUE SIGUE SIENDO TUYO</text>
+                <text x="260" y="284" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">arquitectura · límites del sistema · criterio técnico</text>
+                <text x="260" y="298" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">saber qué NO construir</text>
+
+                <text x="260" y="332" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Especializarse solo en una punta ya no alcanza</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="4"
+            data-module="1"
+            data-tone="cyan"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">5 &middot; Perfiles en evoluci&oacute;n</p>
+              <h2>PO y analistas: depurar la idea antes de que exista código</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Product Owner / Business Analyst:</strong> traducen
+                  la necesidad del negocio en historias, criterios de
+                  aceptación y prioridad.
+                </li>
+                <li>
+                  <strong>El tiempo real se va aquí:</strong> depurar la idea
+                  —preguntas de aclaración, ejemplos, casos borde— antes de que
+                  exista una sola línea de código.
+                </li>
+                <li>
+                  <strong>La ambigüedad no resuelta se paga después:</strong>
+                  un requisito mal entendido se detecta ya en código y obliga
+                  a reprocesar diseño e implementación.
+                </li>
+                <li>
+                  <strong>Los agentes asisten, no decretan:</strong> proponen
+                  preguntas de clarificación y borradores de historias, pero la
+                  prioridad y el alcance siguen siendo criterio humano —aquí
+                  con más supervisión que en código.
+                </li>
+                <li>
+                  <strong>El rol no desaparece, se afila:</strong> menos tiempo
+                  redactando documentos, más tiempo validando con el cliente
+                  real.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama de gestion de requerimientos: el agente propone preguntas de aclaracion, el PO o analista decide alcance y prioridad, y la ambiguedad resuelta tarde en codigo cuesta un reproceso"
+              >
+                <defs>
+                  <marker
+                    id="req-ar"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#6C7A8C" />
+                  </marker>
+                </defs>
+
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">GESTIÓN DE REQUERIMIENTOS</text>
+
+                <!-- Leyenda -->
+                <rect x="150" y="28" width="10" height="10" rx="3" fill="#66862E" />
+                <text x="166" y="37" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Agente asiste</text>
+                <rect x="270" y="28" width="10" height="10" rx="3" fill="#A8781A" />
+                <text x="286" y="37" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Humano decide</text>
+
+                <!-- Necesidad del negocio -->
+                <rect x="185" y="46" width="150" height="30" rx="9" fill="#EDF1F7" stroke="#6C7A8C" stroke-width="1.5" />
+                <text x="260" y="65" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Necesidad del negocio</text>
+
+                <path d="M230 76 L155 98" stroke="#6C7A8C" stroke-width="1.3" marker-end="url(#req-ar)" />
+                <path d="M290 76 L365 98" stroke="#6C7A8C" stroke-width="1.3" marker-end="url(#req-ar)" />
+
+                <!-- Agente: preguntas -->
+                <rect x="60" y="104" width="170" height="56" rx="10" fill="#EDF1F7" stroke="#66862E" stroke-width="1.5" />
+                <text x="145" y="122" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600">Agente</text>
+                <text x="145" y="138" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">propone preguntas</text>
+                <text x="145" y="150" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">de aclaración</text>
+
+                <!-- PO / Analista: decide -->
+                <rect x="250" y="104" width="210" height="56" rx="10" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.5" />
+                <text x="355" y="122" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600">PO / Analista</text>
+                <text x="355" y="138" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">prioriza y decide alcance</text>
+                <text x="355" y="150" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">valida con el negocio real</text>
+
+                <line x1="145" y1="160" x2="145" y2="186" stroke="#6C7A8C" stroke-width="1.2" stroke-dasharray="3 4" />
+                <line x1="355" y1="160" x2="355" y2="186" stroke="#6C7A8C" stroke-width="1.2" stroke-dasharray="3 4" />
+
+                <!-- Salida -->
+                <rect x="110" y="186" width="300" height="34" rx="8" fill="#EDF1F7" stroke="#7189B8" stroke-width="1.5" />
+                <text x="260" y="207" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600">Historia + criterios de aceptación</text>
+
+                <line x1="22" y1="234" x2="498" y2="234" stroke="#B8C2D0" stroke-width="1" />
+                <text x="22" y="250" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" letter-spacing="2">¿QUÉ PASA SI LA AMBIGÜEDAD LLEGA TARDE?</text>
+
+                <rect x="22" y="260" width="476" height="32" rx="8" fill="#FFFFFF" stroke="#66862E" stroke-width="1.2" />
+                <text x="38" y="280" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">Se resuelve en requisitos</text>
+                <text x="215" y="280" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">preguntas + ejemplos: cuesta minutos</text>
+
+                <rect x="22" y="298" width="476" height="32" rx="8" fill="#FFFFFF" stroke="#C55A7B" stroke-width="1.2" />
+                <text x="38" y="318" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">Se detecta ya en código</text>
+                <text x="215" y="318" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10">reproceso de diseño e implementación: cuesta días</text>
+
+                <text x="260" y="346" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">El objetivo: preguntas más claras, resueltas más temprano</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="5"
+            data-module="1"
+            data-tone="yellow"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">6 &middot; Perfiles en evoluci&oacute;n</p>
+              <h2>¿Dónde ejecuta la IA y dónde decide el humano?</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>La IA ejecuta:</strong> explorar el repo, generar
+                  código y pruebas, refactorizar, documentar y dar la primera
+                  pasada de revisión.
+                </li>
+                <li>
+                  <strong>En requisitos, la IA solo asiste:</strong> propone
+                  preguntas de aclaración y borradores de historias, nunca
+                  decide alcance ni prioridad.
+                </li>
+                <li>
+                  <strong>El humano decide:</strong> la intención, los
+                  requisitos, la arquitectura y los criterios de aceptación.
+                  Nada de eso se delega.
+                </li>
+                <li>
+                  <strong>El humano verifica:</strong> lee el diff, corre las
+                  pruebas que importan y responde por seguridad y datos
+                  sensibles <cite>(NIST, 2023)</cite>.
+                </li>
+                <li>
+                  <strong>Puertas irrenunciables:</strong> merge, despliegue a
+                  producción y cualquier operación destructiva o irreversible <cite>(Unión Europea, 2024)</cite>.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 380"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama de reparto de responsabilidades por etapa entre la IA y el humano, incluyendo requisitos, con puertas humanas obligatorias en verificacion y entrega"
+              >
+                <text
+                  x="260"
+                  y="18"
+                  text-anchor="middle"
+                  fill="#454F61"
+                  font-family="Space Grotesk,sans-serif"
+                  font-size="11"
+                  letter-spacing="2"
+                >
+                  REPARTO POR ETAPA
+                </text>
+
+                <!-- Leyenda -->
+                <rect x="160" y="32" width="10" height="10" rx="3" fill="#66862E" />
+                <text x="176" y="41" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">IA ejecuta</text>
+                <rect x="266" y="32" width="10" height="10" rx="3" fill="#A8781A" />
+                <text x="282" y="41" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Humano decide y verifica</text>
+
+                <!-- Requisitos -->
+                <text x="150" y="76" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="11">Requisitos</text>
+                <rect x="160" y="58" width="88" height="26" rx="6" fill="#E4EFD3" stroke="#66862E" stroke-width="1.2" />
+                <text x="172" y="76" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="8.5">propone preguntas</text>
+                <rect x="252" y="58" width="252" height="26" rx="6" fill="#F7E9CC" stroke="#A8781A" stroke-width="1.6" />
+                <text x="264" y="76" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9">prioriza y decide con el negocio</text>
+
+                <!-- Explorar -->
+                <text x="150" y="116" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="11">Explorar</text>
+                <rect x="160" y="98" width="272" height="26" rx="6" fill="#E4EFD3" stroke="#66862E" stroke-width="1.2" />
+                <text x="172" y="116" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9">mapea el repo, resume, encuentra</text>
+                <rect x="434" y="98" width="70" height="26" rx="6" fill="#F7E9CC" stroke="#A8781A" stroke-width="1.2" />
+
+                <!-- Disenar -->
+                <text x="150" y="156" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="11">Diseñar</text>
+                <rect x="160" y="138" width="136" height="26" rx="6" fill="#E4EFD3" stroke="#66862E" stroke-width="1.2" />
+                <text x="172" y="156" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9">propone opciones</text>
+                <rect x="298" y="138" width="206" height="26" rx="6" fill="#F7E9CC" stroke="#A8781A" stroke-width="1.2" />
+                <text x="310" y="156" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9">arquitectura y tradeoffs</text>
+
+                <!-- Construir -->
+                <text x="150" y="196" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="11">Construir</text>
+                <rect x="160" y="178" width="289" height="26" rx="6" fill="#E4EFD3" stroke="#66862E" stroke-width="1.2" />
+                <text x="172" y="196" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9">código · tests · docs · refactor</text>
+                <rect x="451" y="178" width="53" height="26" rx="6" fill="#F7E9CC" stroke="#A8781A" stroke-width="1.2" />
+
+                <!-- Verificar -->
+                <text x="150" y="236" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="11">Verificar</text>
+                <rect x="160" y="218" width="119" height="26" rx="6" fill="#E4EFD3" stroke="#66862E" stroke-width="1.2" />
+                <text x="172" y="236" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9">1ª pasada</text>
+                <rect x="281" y="218" width="223" height="26" rx="6" fill="#F7E9CC" stroke="#A8781A" stroke-width="1.6" />
+                <text x="293" y="236" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9">lee el diff · criterios de aceptación</text>
+
+                <!-- Entregar -->
+                <text x="150" y="276" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="11">Entregar</text>
+                <rect x="160" y="258" width="51" height="26" rx="6" fill="#E4EFD3" stroke="#66862E" stroke-width="1.2" />
+                <rect x="213" y="258" width="291" height="26" rx="6" fill="#F7E9CC" stroke="#A8781A" stroke-width="1.6" />
+                <text x="225" y="276" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9">merge · deploy · rollback</text>
+
+                <!-- Puertas humanas -->
+                <line x1="16" y1="296" x2="504" y2="296" stroke="#B8C2D0" stroke-width="1" />
+                <rect x="16" y="310" width="488" height="30" rx="8" fill="#EDF1F7" stroke="#C55A7B" stroke-width="1.4" />
+                <text x="260" y="329" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="11">PUERTAS HUMANAS: verificar · merge · deploy · borrar</text>
+
+                <text x="260" y="362" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">La IA propone, el humano dispone —más en requisitos que en código</text>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- M2: 3. Chat vs Agente -->
+
+          <article
+            class="slide"
+            data-index="6"
+            data-module="2"
+            data-tone="green"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">7 &middot; Chat vs Agente</p>
+              <h2>Chat responde texto. Agente actúa.</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Un chat genera texto:</strong> responde, y ahí termina su alcance.
+                </li>
+                <li>
+                  <strong>Un agente actúa:</strong> lee código, edita archivos, ejecuta tests y guarda aprendizaje <cite>(Wang et al., 2024)</cite>.
+                </li>
+                <li>
+                  <strong>La diferencia:</strong> pedir consejo frente a tener un par-programmer con acceso al proyecto.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                xmlns="http://www.w3.org/2000/svg"
+                font-family="Space Grotesk,sans-serif"
+                role="img"
+                aria-label="Comparativa chat vs agente"
+              >
+                <defs>
+                  <filter
+                    id="s8-glow"
+                    x="-20%"
+                    y="-20%"
+                    width="140%"
+                    height="140%"
+                  >
+                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                    <feComposite
+                      in="SourceGraphic"
+                      in2="blur"
+                      operator="over"
+                    />
+                  </filter>
+                </defs>
+                <!-- Left: Chat -->
+                <rect
+                  x="20"
+                  y="50"
+                  width="220"
+                  height="280"
+                  rx="12"
+                  fill="#F4F7FA"
+                  stroke="#6C7A8C"
+                  stroke-width="1"
+                  opacity="0.6"
+                />
+                <text
+                  x="130"
+                  y="36"
+                  text-anchor="middle"
+                  font-size="10"
+                  letter-spacing="2"
+                  fill="#5B6472"
+                >
+                  CHAT
+                </text>
+                <rect
+                  x="65"
+                  y="120"
+                  width="130"
+                  height="42"
+                  rx="10"
+                  fill="#EDF1F7"
+                  stroke="#6C7A8C"
+                  stroke-width="1"
+                  opacity="0.7"
+                />
+                <text
+                  x="130"
+                  y="146"
+                  text-anchor="middle"
+                  font-size="12"
+                  fill="#5B6472"
+                >
+                  Pregunta
+                </text>
+                <line
+                  x1="130"
+                  y1="162"
+                  x2="130"
+                  y2="198"
+                  stroke="#6C7A8C"
+                  stroke-width="1.2"
+                  opacity="0.5"
+                />
+                <polygon
+                  points="125,194 130,204 135,194"
+                  fill="#7A8798"
+                  opacity="0.5"
+                />
+                <rect
+                  x="65"
+                  y="204"
+                  width="130"
+                  height="42"
+                  rx="10"
+                  fill="#EDF1F7"
+                  stroke="#6C7A8C"
+                  stroke-width="1"
+                  opacity="0.7"
+                />
+                <text
+                  x="130"
+                  y="230"
+                  text-anchor="middle"
+                  font-size="12"
+                  fill="#5B6472"
+                >
+                  Texto
+                </text>
+                <text
+                  x="130"
+                  y="290"
+                  text-anchor="middle"
+                  font-size="10"
+                  fill="#5B6472"
+                  font-style="italic"
+                >
+                  Solo genera texto
+                </text>
+                <!-- Divider -->
+                <line
+                  x1="260"
+                  y1="50"
+                  x2="260"
+                  y2="330"
+                  stroke="#B8C2D0"
+                  stroke-width="1.2"
+                  stroke-dasharray="6,4"
+                />
+                <rect
+                  x="247"
+                  y="180"
+                  width="26"
+                  height="20"
+                  rx="6"
+                  fill="#F4F7FA"
+                  stroke="#B8C2D0"
+                  stroke-width="1"
+                />
+                <text
+                  x="260"
+                  y="194"
+                  text-anchor="middle"
+                  font-size="9"
+                  fill="#454F61"
+                  font-weight="700"
+                >
+                  vs
+                </text>
+                <!-- Right: Agente -->
+                <rect
+                  x="280"
+                  y="50"
+                  width="220"
+                  height="280"
+                  rx="12"
+                  fill="#F4F7FA"
+                  stroke="#B8C2D0"
+                  stroke-width="1"
+                />
+                <text
+                  x="390"
+                  y="36"
+                  text-anchor="middle"
+                  font-size="10"
+                  letter-spacing="2"
+                  fill="#454F61"
+                >
+                  AGENTE
+                </text>
+                <rect
+                  x="320"
+                  y="80"
+                  width="140"
+                  height="36"
+                  rx="9"
+                  fill="#EDF1F7"
+                  stroke="#4E93B0"
+                  stroke-width="1.3"
+                  filter="url(#s8-glow)"
+                />
+                <text
+                  x="390"
+                  y="103"
+                  text-anchor="middle"
+                  font-size="11"
+                  fill="#1B2029"
+                >
+                  Lee codigo
+                </text>
+                <line
+                  x1="390"
+                  y1="116"
+                  x2="390"
+                  y2="134"
+                  stroke="#4E93B0"
+                  stroke-width="1.2"
+                  opacity="0.6"
+                />
+                <polygon
+                  points="386,131 390,139 394,131"
+                  fill="#4E93B0"
+                  opacity="0.6"
+                />
+                <rect
+                  x="320"
+                  y="140"
+                  width="140"
+                  height="36"
+                  rx="9"
+                  fill="#EDF1F7"
+                  stroke="#66862E"
+                  stroke-width="1.3"
+                />
+                <text
+                  x="390"
+                  y="163"
+                  text-anchor="middle"
+                  font-size="11"
+                  fill="#1B2029"
+                >
+                  Edita archivos
+                </text>
+                <line
+                  x1="390"
+                  y1="176"
+                  x2="390"
+                  y2="194"
+                  stroke="#66862E"
+                  stroke-width="1.2"
+                  opacity="0.6"
+                />
+                <polygon
+                  points="386,191 390,199 394,191"
+                  fill="#66862E"
+                  opacity="0.6"
+                />
+                <rect
+                  x="320"
+                  y="200"
+                  width="140"
+                  height="36"
+                  rx="9"
+                  fill="#EDF1F7"
+                  stroke="#4E8F82"
+                  stroke-width="1.3"
+                />
+                <text
+                  x="390"
+                  y="223"
+                  text-anchor="middle"
+                  font-size="11"
+                  fill="#1B2029"
+                >
+                  Ejecuta tests
+                </text>
+                <line
+                  x1="390"
+                  y1="236"
+                  x2="390"
+                  y2="254"
+                  stroke="#4E8F82"
+                  stroke-width="1.2"
+                  opacity="0.6"
+                />
+                <polygon
+                  points="386,251 390,259 394,251"
+                  fill="#4E8F82"
+                  opacity="0.6"
+                />
+                <rect
+                  x="320"
+                  y="260"
+                  width="140"
+                  height="36"
+                  rx="9"
+                  fill="#EDF1F7"
+                  stroke="#7189B8"
+                  stroke-width="1.3"
+                />
+                <text
+                  x="390"
+                  y="283"
+                  text-anchor="middle"
+                  font-size="11"
+                  fill="#1B2029"
+                >
+                  Guarda memoria
+                </text>
+                <text
+                  x="390"
+                  y="318"
+                  text-anchor="middle"
+                  font-size="10"
+                  fill="#4F6B23"
+                  font-weight="500"
+                  font-style="italic"
+                >
+                  Actua sobre el entorno
+                </text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="7"
+            data-module="2"
+            data-tone="cyan"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">8 &middot; Chat vs Agente</p>
+              <h2>Benchmarks: agentes en el mercado, pagos y gratuitos</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>El benchmark de facto:</strong> SWE-bench Verified
+                  mide si un agente resuelve issues reales de GitHub,
+                  validados por humanos <cite>(Jiménez et al., 2024)</cite>.
+                </li>
+                <li>
+                  <strong>Agentes de pago (frontier):</strong> Claude Code
+                  (Anthropic) y Codex (OpenAI) —modelos propietarios cerrados,
+                  con su propio harness, por suscripción o consumo por token.
+                </li>
+                <li>
+                  <strong>Agentes gratuitos y abiertos:</strong> OpenCode
+                  —harness open source que conecta con más de 75 proveedores
+                  (Claude, GPT, Gemini, DeepSeek, Kimi K2, Qwen, GLM) con tu
+                  propia llave, sin licencia de por medio.
+                </li>
+                <li>
+                  <strong>La brecha se cerró:</strong> Kimi K2.6, MiniMax
+                  M2.7 y GLM-5 —los modelos abiertos que corre OpenCode—
+                  rinden cerca del 90% de GPT 5.5 o Claude Opus 4.7 en GPQA y
+                  SWE-bench <cite>(Guo et al., 2025)</cite>.
+                </li>
+                <li>
+                  <strong>A 1/15 del precio:</strong> el frontier dejó de ser
+                  exclusivo de quien paga suscripción premium —la decisión
+                  ahora es de arquitectura, no solo de presupuesto.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Comparacion de agentes de codigo pagos (Claude Code, Codex) y gratuitos u abiertos (OpenCode con multiples proveedores), con benchmarks SWE-bench de GPT 5.5 y Claude Opus 4.7 frente a los modelos abiertos Kimi K2.6, MiniMax M2.7 y GLM-5, que rinden cerca del 90% a una fraccion del precio"
+              >
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">AGENTES DE CÓDIGO EN EL MERCADO</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8" font-style="italic">evaluados con SWE-bench Verified · issues reales de GitHub</text>
+
+                <text x="140" y="54" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="600" letter-spacing="1">PAGOS / CERRADOS</text>
+                <text x="380" y="54" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="600" letter-spacing="1">GRATUITOS / ABIERTOS</text>
+
+                <rect x="40" y="64" width="200" height="42" rx="9" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.4" />
+                <text x="140" y="83" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700">Claude Code</text>
+                <text x="140" y="98" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">Anthropic · suscripción o API</text>
+
+                <rect x="40" y="112" width="200" height="42" rx="9" fill="#EDF1F7" stroke="#7189B8" stroke-width="1.4" />
+                <text x="140" y="131" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700">Codex</text>
+                <text x="140" y="146" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">OpenAI · suscripción o API</text>
+
+                <rect x="280" y="64" width="200" height="42" rx="9" fill="#E4EFD3" stroke="#66862E" stroke-width="1.4" />
+                <text x="380" y="83" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700">OpenCode</text>
+                <text x="380" y="98" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">harness open source</text>
+
+                <rect x="280" y="112" width="200" height="42" rx="9" fill="#E4EFD3" stroke="#66862E" stroke-width="1.4" />
+                <text x="380" y="129" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="700">+75 proveedores (BYOK)</text>
+                <text x="380" y="144" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8">DeepSeek · Qwen · Kimi K2 · GLM</text>
+
+                <line x1="16" y1="168" x2="504" y2="168" stroke="#B8C2D0" stroke-width="1" />
+                <text x="16" y="184" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" letter-spacing="2">¿QUÉ TAN BUENOS SON?</text>
+
+                <!-- GPT 5.5 -->
+                <rect x="28" y="196" width="88" height="84" rx="8" fill="#F4F7FA" stroke="#A8781A" stroke-width="1.3" />
+                <text x="72" y="212" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">GPT 5.5</text>
+                <text x="72" y="230" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7">SWE-bench</text>
+                <text x="72" y="248" text-anchor="middle" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="700">88.7%</text>
+                <text x="72" y="266" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="7.5">$5&ndash;$30/M tok</text>
+
+                <!-- Claude Opus 4.7 -->
+                <rect x="122" y="196" width="88" height="84" rx="8" fill="#F4F7FA" stroke="#7189B8" stroke-width="1.3" />
+                <text x="166" y="212" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Opus 4.7</text>
+                <text x="166" y="230" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7">SWE-bench</text>
+                <text x="166" y="248" text-anchor="middle" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="700">87.6%</text>
+                <text x="166" y="266" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="7.5">$5&ndash;$25/M tok</text>
+
+                <line x1="216" y1="210" x2="216" y2="266" stroke="#B8C2D0" stroke-width="1" stroke-dasharray="3 3" />
+
+                <!-- Kimi K2.6 -->
+                <rect x="222" y="196" width="88" height="84" rx="8" fill="#F4F7FA" stroke="#D45FAE" stroke-width="1.3" />
+                <text x="266" y="212" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Kimi K2.6</text>
+                <text x="266" y="230" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7">SWE-bench</text>
+                <text x="266" y="248" text-anchor="middle" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="700">80.2%</text>
+                <text x="266" y="266" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="600">$0.55&ndash;$2.65</text>
+
+                <!-- MiniMax M2.7 -->
+                <rect x="316" y="196" width="88" height="84" rx="8" fill="#F4F7FA" stroke="#4E8F82" stroke-width="1.3" />
+                <text x="360" y="212" text-anchor="middle" fill="#2E6B60" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">MiniMax M2.7</text>
+                <text x="360" y="230" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7">SWE-bench</text>
+                <text x="360" y="248" text-anchor="middle" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="700">78.0%</text>
+                <text x="360" y="266" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="600">$0.30&ndash;$1.20</text>
+
+                <!-- GLM-5 -->
+                <rect x="410" y="196" width="88" height="84" rx="8" fill="#F4F7FA" stroke="#B86F24" stroke-width="1.3" />
+                <text x="454" y="212" text-anchor="middle" fill="#9A5B12" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">GLM-5</text>
+                <text x="454" y="230" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7">SWE-bench</text>
+                <text x="454" y="248" text-anchor="middle" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="700">77.8%</text>
+                <text x="454" y="266" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="600">$0.30&ndash;$1.20</text>
+
+                <text x="260" y="300" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="700">~90% de capacidad a 1/15 del precio</text>
+                <text x="260" y="316" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8">GPQA y SWE-bench Verified · precio input/output por millón de tokens</text>
+                <text x="260" y="336" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">Claude Code y Codex usan los primeros; OpenCode puede correr cualquiera</text>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- M3: 4. Evidencia: que dicen los datos -->
+
+          <article
+            class="slide"
+            data-index="8"
+            data-module="3"
+            data-tone="blue"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">9 &middot; Evidencia</p>
+              <h2>Velocidad y adopción: lo que miden los estudios</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>55% más rápido:</strong> 95 desarrolladores completaron
+                  la misma tarea con y sin GitHub Copilot —1h11 frente a
+                  2h41— en un experimento controlado <cite>(Kalliamvakou, 2024)</cite>.
+                </li>
+                <li>
+                  <strong>21% menos tiempo en tareas complejas de empresa:</strong>
+                  ensayo controlado con 96 ingenieros de Google usando
+                  autocompletado y generación de código con IA <cite>(Paradis et al., 2024)</cite>.
+                </li>
+                <li>
+                  <strong>Hasta 2x más rápido en tareas puntuales:</strong> los
+                  equipos que adoptan IA generativa reportan 20-30% más
+                  eficiencia <cite>(Karaci Deniz et al., 2023)</cite>.
+                </li>
+                <li>
+                  <strong>La adopción ya es mayoritaria:</strong> 90% de casi
+                  5.000 profesionales usa IA a diario, y más del 80% percibe
+                  una mejora de productividad <cite>(DORA, 2025)</cite>.
+                </li>
+                <li>
+                  <strong>Pero adoptar no es suficiente:</strong> la misma
+                  medición encuentra que la IA amplifica tanto las fortalezas
+                  como las debilidades de cada organización <cite>(DORA, 2025)</cite>.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Grafico de barras con la reduccion de tiempo en tareas medida por tres estudios controlados (GitHub, Google, McKinsey), y dos indicadores de adopcion diaria y productividad percibida segun DORA 2025"
+              >
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">REDUCCIÓN DE TIEMPO EN TAREAS CON IA</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8" font-style="italic">muestras y metodologías distintas, todas con grupo de control</text>
+
+                <!-- Barra 1: GitHub Copilot -->
+                <text x="170" y="70" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="500">GitHub Copilot</text>
+                <rect x="180" y="52" width="220" height="28" rx="6" fill="#E4EFD3" stroke="#66862E" stroke-width="1.3" />
+                <text x="408" y="70" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="700">55%</text>
+
+                <!-- Barra 2: Google -->
+                <text x="170" y="114" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="500">Google (empresa)</text>
+                <rect x="180" y="96" width="84" height="28" rx="6" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.3" />
+                <text x="272" y="114" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="700">21%</text>
+
+                <!-- Barra 3: McKinsey -->
+                <text x="170" y="158" text-anchor="end" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="500">McKinsey (equipos)</text>
+                <rect x="180" y="140" width="108" height="28" rx="6" fill="#F4F7FA" stroke="#7189B8" stroke-width="1.3" />
+                <text x="296" y="158" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="700">20&ndash;30%</text>
+
+                <line x1="16" y1="186" x2="504" y2="186" stroke="#B8C2D0" stroke-width="1" />
+                <text x="16" y="202" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" letter-spacing="2">ADOPCIÓN YA ES MAYORITARIA</text>
+
+                <!-- Tile 1: adopcion diaria -->
+                <rect x="40" y="212" width="200" height="96" rx="12" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.4" />
+                <text x="140" y="254" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="28" font-weight="700">90%</text>
+                <text x="140" y="272" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">usa IA a diario</text>
+                <text x="140" y="298" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8">DORA · n≈5.000 · 2025</text>
+
+                <!-- Tile 2: productividad percibida -->
+                <rect x="280" y="212" width="200" height="96" rx="12" fill="#EDF1F7" stroke="#66862E" stroke-width="1.4" />
+                <text x="380" y="254" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="28" font-weight="700">80%+</text>
+                <text x="380" y="270" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">percibe mejora de</text>
+                <text x="380" y="283" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">productividad</text>
+                <text x="380" y="298" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8">DORA · n≈5.000 · 2025</text>
+
+                <text x="260" y="340" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Estudios independientes coinciden: menos tiempo por tarea, adopción mayoritaria</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="9"
+            data-module="3"
+            data-tone="orange"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">10 &middot; Evidencia</p>
+              <h2>El matiz: el contexto decide cuánto ayuda la IA</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>No es parejo:</strong> en código nuevo y de baja
+                  complejidad la IA aporta 30-40% de productividad; en código
+                  existente y complejo, apenas 0-10% <cite>(Denisov-Blanch, Stanford SWEPR)</cite>.
+                </li>
+                <li>
+                  <strong>A veces resta:</strong> un ensayo con 16
+                  desarrolladores experimentados y 246 tareas reales encontró
+                  que usar IA los hizo 19% más lentos en repos complejos que
+                  ya conocían <cite>(Becker et al., 2025)</cite>.
+                </li>
+                <li>
+                  <strong>La percepción engaña:</strong> esos mismos
+                  desarrolladores estimaron que la IA los había hecho 20% más
+                  rápidos —la brecha entre sentirse productivo y serlo es
+                  real <cite>(Becker et al., 2025)</cite>.
+                </li>
+                <li>
+                  <strong>La ganancia neta no es el código generado:</strong>
+                  depende de cuánto se pierde después en revisión y reproceso <cite>(Denisov-Blanch, Stanford SWEPR)</cite>.
+                </li>
+                <li>
+                  <strong>Pero adoptar no es suficiente:</strong> la misma
+                  medición encuentra que la IA amplifica tanto las fortalezas
+                  como las debilidades de cada organización <cite>(DORA, 2025)</cite>.
+                </li>
+                <li>
+                  <strong>La conclusión no cambia:</strong> la IA rinde más
+                  donde el criterio humano define bien la tarea y verifica el
+                  resultado —el mismo reparto por etapa que ya vimos.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Comparacion de la ganancia de productividad de la IA segun la complejidad del codigo, y grafico divergente que contrasta la velocidad percibida frente a la velocidad medida en un ensayo controlado"
+              >
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">CONTEXTO IMPORTA: DOS ESTUDIOS</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8" font-style="italic">misma tecnología, resultados opuestos</text>
+
+                <!-- Columna izquierda: greenfield -->
+                <rect x="40" y="44" width="200" height="92" rx="10" fill="#E4EFD3" stroke="#66862E" stroke-width="1.4" />
+                <text x="140" y="64" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600">Código nuevo</text>
+                <text x="140" y="78" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">baja complejidad (greenfield)</text>
+                <text x="140" y="110" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="20" font-weight="700">30&ndash;40%</text>
+                <text x="140" y="126" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8.5">ganancia de productividad</text>
+
+                <!-- Columna derecha: brownfield -->
+                <rect x="280" y="44" width="200" height="92" rx="10" fill="#F7E9CC" stroke="#A8781A" stroke-width="1.4" />
+                <text x="380" y="64" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="600">Código existente</text>
+                <text x="380" y="78" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">alta complejidad (brownfield)</text>
+                <text x="380" y="110" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="20" font-weight="700">0&ndash;10%</text>
+                <text x="380" y="126" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8.5">ganancia de productividad</text>
+
+                <text x="260" y="150" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8">Stanford Software Engineering Productivity Research</text>
+
+                <line x1="16" y1="168" x2="504" y2="168" stroke="#B8C2D0" stroke-width="1" />
+                <text x="16" y="184" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" letter-spacing="2">EXPECTATIVA VS REALIDAD (METR, 2025)</text>
+
+                <line x1="260" y1="204" x2="260" y2="280" stroke="#B8C2D0" stroke-width="1" />
+
+                <!-- Percepcion (positiva, derecha) -->
+                <text x="294" y="210" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8.5">Percepción (antes de empezar)</text>
+                <rect x="260" y="214" width="68" height="24" rx="5" fill="#E4EFD3" stroke="#66862E" stroke-width="1.3" />
+                <text x="332" y="230" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700">+20%</text>
+
+                <!-- Medicion real (negativa, izquierda) -->
+                <text x="227" y="246" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8.5">Medición real (tiempo cronometrado)</text>
+                <rect x="195" y="250" width="65" height="24" rx="5" fill="#FFFFFF" stroke="#C55A7B" stroke-width="1.4" />
+                <text x="188" y="266" text-anchor="end" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700">&minus;19%</text>
+
+                <text x="260" y="300" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">n = 16 devs · 246 tareas reales en repos que ya conocían</text>
+                <text x="260" y="340" text-anchor="middle" fill="#9A5B12" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">El criterio humano decide cuándo delegar y cuándo no</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="10"
+            data-module="3"
+            data-tone="red"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">11 &middot; Evidencia</p>
+              <h2>La IA amplifica: fortalezas y debilidades de la organización</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>El hallazgo:</strong> la misma medición de DORA
+                  encuentra que la IA amplifica tanto las fortalezas como las
+                  debilidades de cada organización <cite>(DORA, 2025)</cite>.
+                </li>
+                <li>
+                  <strong>Sin reglas, amplifica el caos:</strong> procesos
+                  ambiguos, criterios de aceptación difusos y arquitectura sin
+                  definir se multiplican, no se corrigen.
+                </li>
+                <li>
+                  <strong>Con reglas, amplifica el criterio:</strong>
+                  especificaciones explícitas, convenciones del proyecto y
+                  memoria persistente convierten al agente en una extensión
+                  del desarrollador, no en un generador ciego.
+                </li>
+                <li>
+                  <strong>La diferencia no es el modelo:</strong> es el
+                  contexto que se le entrega —specs, arquitectura, límites—
+                  antes de dejarlo actuar.
+                </li>
+                <li>
+                  <strong>Por eso el criterio humano no desaparece:</strong>
+                  define las reglas que el agente amplifica; sin esa entrada,
+                  ningún agente compensa un proceso roto.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama del efecto amplificador de la IA: sin reglas explicitas y especificaciones amplifica el caos organizacional, con reglas y especificaciones amplifica el criterio y se convierte en extension del desarrollador"
+              >
+                <defs>
+                  <marker
+                    id="amp-ar"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#6C7A8C" />
+                  </marker>
+                </defs>
+
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">LA IA COMO AMPLIFICADOR</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8" font-style="italic">DORA, 2025: multiplica lo que ya existe</text>
+
+                <!-- Organizacion -->
+                <rect x="185" y="42" width="150" height="28" rx="9" fill="#F4F7FA" stroke="#6C7A8C" stroke-width="1.5" />
+                <text x="260" y="60" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500">Organización</text>
+
+                <path d="M260 70 V90" stroke="#6C7A8C" stroke-width="1.3" marker-end="url(#amp-ar)" />
+
+                <!-- Gate -->
+                <rect x="110" y="92" width="300" height="34" rx="8" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.5" />
+                <text x="260" y="113" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">¿Reglas explícitas + especificaciones?</text>
+
+                <path d="M200 126 L145 164" stroke="#C55A7B" stroke-width="1.3" marker-end="url(#amp-ar)" />
+                <text x="165" y="148" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="600">NO</text>
+
+                <path d="M320 126 L375 164" stroke="#66862E" stroke-width="1.3" marker-end="url(#amp-ar)" />
+                <text x="355" y="148" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="600">SÍ</text>
+
+                <!-- Box A: sin reglas -->
+                <rect x="40" y="168" width="200" height="74" rx="10" fill="#FFFFFF" stroke="#C55A7B" stroke-width="1.4" />
+                <text x="140" y="188" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600">Sin reglas explícitas</text>
+                <text x="140" y="204" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">el agente improvisa sobre</text>
+                <text x="140" y="216" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">un proceso ambiguo</text>
+                <text x="140" y="234" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">amplifica el caos</text>
+
+                <!-- Box B: con reglas -->
+                <rect x="280" y="168" width="200" height="74" rx="10" fill="#E4EFD3" stroke="#66862E" stroke-width="1.4" />
+                <text x="380" y="188" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600">Con reglas + specs</text>
+                <text x="380" y="204" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">el agente hereda criterio</text>
+                <text x="380" y="216" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">y límites del equipo</text>
+                <text x="380" y="234" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">extensión del developer</text>
+
+                <line x1="16" y1="256" x2="504" y2="256" stroke="#B8C2D0" stroke-width="1" />
+                <text x="16" y="272" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" letter-spacing="2">¿QUÉ ALIMENTA ESA DIFERENCIA?</text>
+
+                <rect x="22" y="282" width="150" height="30" rx="8" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="97" y="301" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">Especificaciones</text>
+
+                <rect x="185" y="282" width="150" height="30" rx="8" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="260" y="301" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">Convenciones del repo</text>
+
+                <rect x="348" y="282" width="150" height="30" rx="8" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1" />
+                <text x="423" y="301" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">Memoria persistente</text>
+
+                <text x="260" y="340" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">El agente no reemplaza el criterio humano: lo amplifica</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="11"
+            data-module="3"
+            data-tone="red"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">12 &middot; Evidencia</p>
+              <h2>Riesgos consolidados: qué falla cuando la IA actúa sin reglas</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Riesgo de seguridad:</strong> sin revisión, el
+                  código generado introduce vulnerabilidades en 45% de los
+                  casos —hasta 72% en Java— y acumula 2.74x más fallos que el
+                  código escrito por humanos <cite>(Veracode, 2025)</cite>.
+                </li>
+                <li>
+                  <strong>Memoria escasa del agente:</strong> decidir bien
+                  exige conocer el sistema y las reglas ya documentadas, pero
+                  los archivos de contexto casi nunca cubren seguridad
+                  (14.8%) ni rendimiento (14.5%) —el agente decide sin esa
+                  memoria <cite>(Chatlatanagulchai et al., 2025)</cite>.
+                </li>
+                <li>
+                  <strong>Desconexión con el código y las reglas:</strong> el
+                  uso libre del agente ignora oportunidades de reutilización
+                  y genera redundancia <cite>(Huang et al., 2026)</cite>;
+                  entre 2020 y 2024 el refactor cayó de 24.1% a 9.5% de los
+                  commits mientras el código copiado y pegado subió de 8.3% a
+                  12.3% <cite>(GitClear, 2025)</cite>.
+                </li>
+                <li>
+                  <strong>La consecuencia:</strong> 88% de los desarrolladores
+                  reporta al menos un impacto negativo de la IA en deuda
+                  técnica, y 53% lo atribuye a código que parece correcto pero
+                  no es confiable <cite>(Sonar, 2026)</cite>.
+                </li>
+                <li>
+                  <strong>La raíz común:</strong> cuando el criterio del
+                  arquitecto y del desarrollador no está codificado en reglas
+                  explícitas, el agente no tiene con qué alinearse —cada
+                  riesgo es la misma desconexión vista desde un ángulo
+                  distinto.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Cuatro tarjetas de riesgo consolidadas: seguridad, memoria escasa del agente, desconexion con el codigo y las reglas, y deuda tecnica como consecuencia, todas originadas por la ausencia de reglas explicitas"
+              >
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">RIESGOS CUANDO LA IA ACTÚA SIN REGLAS</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8" font-style="italic">cuatro fallas, una misma causa</text>
+
+                <!-- Card 1: Seguridad -->
+                <rect x="22" y="44" width="228" height="100" rx="10" fill="#FFFFFF" stroke="#C55A7B" stroke-width="1.4" />
+                <text x="136" y="64" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="11.5" font-weight="600">Seguridad</text>
+                <text x="136" y="92" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="21" font-weight="700">45%</text>
+                <text x="136" y="108" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">código con vulnerabilidades</text>
+                <text x="136" y="132" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7.5">Veracode, 2025</text>
+
+                <!-- Card 2: Memoria escasa -->
+                <rect x="270" y="44" width="228" height="100" rx="10" fill="#FFFFFF" stroke="#C55A7B" stroke-width="1.4" />
+                <text x="384" y="64" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="11.5" font-weight="600">Memoria escasa</text>
+                <text x="384" y="92" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="21" font-weight="700">14.8%</text>
+                <text x="384" y="108" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">de context files cubre seguridad</text>
+                <text x="384" y="132" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7.5">Chatlatanagulchai et al., 2025</text>
+
+                <!-- Card 3: Desconexion -->
+                <rect x="22" y="156" width="228" height="100" rx="10" fill="#FFFFFF" stroke="#C55A7B" stroke-width="1.4" />
+                <text x="136" y="176" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="11.5" font-weight="600">Código desconectado</text>
+                <text x="136" y="203" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="16" font-weight="700">24.1%&rarr;9.5%</text>
+                <text x="136" y="219" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">refactor perdido (2020&ndash;24)</text>
+                <text x="136" y="243" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7.5">GitClear, 2025</text>
+
+                <!-- Card 4: Deuda tecnica -->
+                <rect x="270" y="156" width="228" height="100" rx="10" fill="#FFFFFF" stroke="#C55A7B" stroke-width="1.4" />
+                <text x="384" y="176" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="11.5" font-weight="600">Deuda técnica</text>
+                <text x="384" y="204" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="21" font-weight="700">88%</text>
+                <text x="384" y="220" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">reporta impacto negativo</text>
+                <text x="384" y="244" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7.5">Sonar, 2026</text>
+
+                <line x1="22" y1="268" x2="498" y2="268" stroke="#B8C2D0" stroke-width="1" />
+
+                <rect x="22" y="280" width="476" height="52" rx="10" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.4" />
+                <text x="260" y="300" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">La causa común</text>
+                <text x="260" y="318" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">criterio sin reglas explícitas que el agente pueda seguir</text>
+
+                <text x="260" y="350" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="10">Cuatro síntomas, la misma raíz: falta de reglas explícitas</text>
+              </svg>
+            </figure>
+          </article>
+
+          <!-- M4: 5. La respuesta: ingenieria aplicada -->
+
+          <article
+            class="slide"
+            data-index="12"
+            data-module="4"
+            data-tone="purple"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">13 &middot; La respuesta</p>
+              <h2>Lo que se necesita: contexto amplio, no un prompt suelto</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>No basta con un prompt mejor:</strong> los cuatro
+                  riesgos anteriores comparten una causa —el agente actuó sin
+                  el contexto que un desarrollador senior sí tiene.
+                </li>
+                <li>
+                  <strong>Reglas + conocimiento del negocio:</strong> qué
+                  requisitos importan, qué prioriza el negocio, qué ya se
+                  decidió y por qué —sin esto, el agente repite preguntas que
+                  el equipo ya respondió.
+                </li>
+                <li>
+                  <strong>Conocimiento de arquitectura:</strong> límites del
+                  sistema, convenciones del repo, qué NO tocar —sin esto, el
+                  agente propone código correcto en el vacío pero incompatible
+                  con lo que ya existe.
+                </li>
+                <li>
+                  <strong>Memoria de los agentes:</strong> que las decisiones
+                  y el contexto persistan entre sesiones —sin esto, cada
+                  sesión empieza de cero y el equipo vuelve a explicarlo todo.
+                </li>
+                <li>
+                  <strong>El patrón se repite:</strong> cada riesgo de la
+                  diapositiva anterior desaparece cuando una de estas tres
+                  piezas está presente.
+                </li>
+                <li>
+                  <strong>La propuesta concreta:</strong> archivos de
+                  arquitectura versionados, un workflow de ingeniería (SDD)
+                  que ordena las fases, y memoria persistente entre sesiones
+                  —tres piezas, tres pilares.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama de tres columnas de contexto —reglas y negocio, arquitectura, memoria— sosteniendo una plataforma de contexto amplio que permite al agente decidir como el equipo"
+              >
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">TRES PIEZAS DE CONTEXTO</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8" font-style="italic">lo que un desarrollador senior ya trae, y el agente no</text>
+
+                <rect x="30" y="60" width="460" height="40" rx="10" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.6" />
+                <text x="260" y="85" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700">CONTEXTO AMPLIO</text>
+
+                <line x1="114" y1="100" x2="114" y2="112" stroke="#B8C2D0" stroke-width="1.2" stroke-dasharray="3 3" />
+                <line x1="260" y1="100" x2="260" y2="112" stroke="#B8C2D0" stroke-width="1.2" stroke-dasharray="3 3" />
+                <line x1="406" y1="100" x2="406" y2="112" stroke="#B8C2D0" stroke-width="1.2" stroke-dasharray="3 3" />
+
+                <!-- Pilar 1: reglas + negocio -->
+                <rect x="48" y="112" width="132" height="170" rx="10" fill="#EDF1F7" stroke="#A8781A" stroke-width="1.4" />
+                <text x="114" y="136" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">Reglas + negocio</text>
+                <text x="114" y="160" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">requisitos</text>
+                <text x="114" y="176" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">prioridad del negocio</text>
+                <text x="114" y="192" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">decisiones previas</text>
+                <rect x="60" y="248" width="108" height="20" rx="10" fill="#A8781A" opacity="0.12" />
+                <text x="114" y="262" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="600">SDD (workflow)</text>
+
+                <!-- Pilar 2: arquitectura -->
+                <rect x="194" y="112" width="132" height="170" rx="10" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.4" />
+                <text x="260" y="136" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">Arquitectura</text>
+                <text x="260" y="160" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">límites del sistema</text>
+                <text x="260" y="176" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">convenciones del repo</text>
+                <text x="260" y="192" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">qué NO tocar</text>
+                <rect x="206" y="248" width="108" height="20" rx="10" fill="#4E93B0" opacity="0.12" />
+                <text x="260" y="262" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="600">archivos de arquitectura</text>
+
+                <!-- Pilar 3: memoria -->
+                <rect x="340" y="112" width="132" height="170" rx="10" fill="#EDF1F7" stroke="#D45FAE" stroke-width="1.4" />
+                <text x="406" y="136" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">Memoria</text>
+                <text x="406" y="160" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">contexto entre sesiones</text>
+                <text x="406" y="176" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">decisiones que no se repiten</text>
+                <text x="406" y="192" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">nada empieza de cero</text>
+                <rect x="352" y="248" width="108" height="20" rx="10" fill="#D45FAE" opacity="0.12" />
+                <text x="406" y="262" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="600">memoria persistente</text>
+
+                <line x1="48" y1="282" x2="472" y2="282" stroke="#B8C2D0" stroke-width="1" />
+                <text x="260" y="306" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="600">El agente decide como el equipo, no en el vacío</text>
+                <text x="260" y="328" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" font-style="italic">cada pieza cierra uno de los riesgos anteriores</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="13"
+            data-module="4"
+            data-tone="cyan"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">14 &middot; La respuesta</p>
+              <h2>De pedir y rezar a un proceso de ingeniería</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>El cuello de botella se movió:</strong> dejó de
+                  estar en escribir código y pasó a especificar y verificar <cite>(Hou et al., 2024)</cite>.
+                </li>
+                <li>
+                  <strong>La respuesta no es un prompt mejor:</strong> es un
+                  proceso de ingeniería que alimenta al agente con reglas,
+                  arquitectura y memoria antes de dejarlo actuar.
+                </li>
+                <li>
+                  <strong>De «pedir y rezar» a una línea de montaje:</strong>
+                  reunir el contexto, especificar la tarea, aplicar el
+                  cambio, verificar el resultado —en ese orden, no al revés.
+                </li>
+                <li>
+                  <strong>No es nuevo:</strong> son los mismos principios de
+                  ingeniería de software —requisitos, arquitectura,
+                  trazabilidad— aplicados al flujo con IA <cite>(Hou et al., 2024)</cite>.
+                </li>
+                <li>
+                  <strong>El resultado:</strong> un agente que decide con el
+                  mismo criterio del equipo, porque el proceso se lo entrega
+                  antes de escribir la primera línea.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Comparacion entre pedir y rezar con un prompt suelto, y un proceso de ingenieria aplicada a la IA con cuatro pasos: contexto, especificar, aplicar y verificar"
+              >
+                <defs>
+                  <marker
+                    id="ing-ar"
+                    viewBox="0 0 10 10"
+                    refX="9"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M0 0 L10 5 L0 10 z" fill="#6C7A8C" />
+                  </marker>
+                </defs>
+
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">DE PEDIR Y REZAR A UN PROCESO</text>
+
+                <!-- Panel izquierdo -->
+                <rect x="28" y="40" width="195" height="200" rx="12" fill="#F4F7FA" opacity="0.6" stroke="#B8C2D0" stroke-width="1" />
+                <text x="125" y="64" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="10" letter-spacing="1.5">PEDIR Y REZAR</text>
+                <circle cx="125" cy="140" r="26" fill="none" stroke="#C55A7B" stroke-width="1.5" opacity="0.8" />
+                <text x="125" y="150" text-anchor="middle" fill="#A83A59" font-family="Space Grotesk,sans-serif" font-size="28" font-weight="700">?</text>
+                <text x="125" y="210" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9">un prompt, una esperanza</text>
+
+                <path d="M225 140 H293" stroke="#6C7A8C" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#ing-ar)" />
+
+                <!-- Panel derecho -->
+                <rect x="297" y="40" width="195" height="200" rx="12" fill="#F4F7FA" opacity="0.6" stroke="#B8C2D0" stroke-width="1" />
+                <text x="394" y="64" text-anchor="middle" fill="#2E6B60" font-family="Space Grotesk,sans-serif" font-size="10" letter-spacing="1.5">PROCESO DE INGENIERÍA</text>
+
+                <line x1="318" y1="166" x2="472" y2="166" stroke="#B8C2D0" stroke-width="2" stroke-linecap="round" />
+
+                <rect x="322" y="148" width="36" height="36" rx="8" fill="#EDF1F7" stroke="#4E8F82" stroke-width="1.2" />
+                <text x="340" y="140" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="7">Contexto</text>
+
+                <line x1="358" y1="166" x2="368" y2="166" stroke="#4E8F82" stroke-width="1" marker-end="url(#ing-ar)" opacity="0.7" />
+
+                <rect x="373" y="148" width="36" height="36" rx="8" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.2" />
+                <text x="391" y="140" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="7">Especificar</text>
+
+                <line x1="409" y1="166" x2="419" y2="166" stroke="#4E8F82" stroke-width="1" marker-end="url(#ing-ar)" opacity="0.7" />
+
+                <rect x="424" y="148" width="36" height="36" rx="8" fill="#EDF1F7" stroke="#66862E" stroke-width="1.2" />
+                <text x="442" y="140" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="7">Aplicar</text>
+
+                <text x="394" y="200" text-anchor="middle" fill="#2E6B60" font-family="Space Grotesk,sans-serif" font-size="8" opacity="0.9">reglas · arquitectura · memoria</text>
+
+                <rect x="380" y="212" width="28" height="18" rx="4" fill="#EDF1F7" stroke="#66862E" stroke-width="1" opacity="0.8" />
+                <text x="394" y="225" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10">&check;</text>
+                <text x="394" y="240" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8">resultado verificado</text>
+
+                <line x1="60" y1="256" x2="460" y2="256" stroke="#B8C2D0" stroke-width="0.8" />
+                <text x="260" y="280" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600">Ingeniería aplicada a la IA</text>
+                <text x="260" y="298" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">los mismos principios de ingeniería de software, aplicados al flujo con IA</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="14"
+            data-module="4"
+            data-tone="magenta"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">15 &middot; La respuesta</p>
+              <h2>El ecosistema completo: cinco piezas, un sistema</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>No es una herramienta, es un sistema:</strong> cada
+                  pieza cubre un límite distinto del agente —sin ellas,
+                  vuelve la amnesia, la genericidad y la desconexión.
+                </li>
+                <li>
+                  <strong>Levantamiento de requerimientos:</strong>
+                  metodología que convierte preguntas de negocio en
+                  requisitos numerados —la base de todo lo demás.
+                </li>
+                <li>
+                  <strong>Arquitectura:</strong> límites del sistema y
+                  convenciones documentadas, para que el agente no proponga
+                  en el vacío.
+                </li>
+                <li>
+                  <strong>Engram + SDD + Skills:</strong> memoria persistente,
+                  workflow orquestado y patrones codificados —continuidad,
+                  estructura y consistencia entre sesiones.
+                </li>
+                <li>
+                  <strong>Juntas, no por separado:</strong> el sistema
+                  profesional aparece cuando las cinco piezas trabajan como
+                  una sola cadena.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama del ecosistema completo: levantamiento de requerimientos y arquitectura alimentan a Engram (memoria persistente), SDD (workflow orquestado) y Skills (patrones codificados), que convergen en un sistema profesional"
+              >
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="11" letter-spacing="2">EL ECOSISTEMA COMPLETO</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="8" font-style="italic">cinco piezas cierran los límites del agente</text>
+
+                <!-- Fila 1: entradas -->
+                <rect x="40" y="40" width="210" height="64" rx="10" fill="#F4F7FA" stroke="#A8781A" stroke-width="1.5" />
+                <text x="145" y="62" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="700">Levantamiento de</text>
+                <text x="145" y="76" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="700">requerimientos</text>
+                <text x="145" y="94" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8">preguntas &rarr; requisitos numerados</text>
+
+                <rect x="270" y="40" width="210" height="64" rx="10" fill="#F4F7FA" stroke="#4E93B0" stroke-width="1.5" />
+                <text x="375" y="68" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700">Arquitectura</text>
+                <text x="375" y="88" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8">límites del sistema, documentados</text>
+
+                <line x1="40" y1="112" x2="480" y2="112" stroke="#B8C2D0" stroke-width="1" stroke-dasharray="4 3" />
+                <text x="260" y="122" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7.5" letter-spacing="1">alimentan a</text>
+
+                <!-- Fila 2: mecanismos -->
+                <rect x="30" y="130" width="150" height="84" rx="10" fill="#F4F7FA" stroke="#D45FAE" stroke-width="1.5" />
+                <text x="105" y="154" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700">Engram</text>
+                <text x="105" y="170" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">memoria persistente</text>
+                <rect x="65" y="180" width="80" height="18" rx="9" fill="#D45FAE" opacity="0.12" />
+                <text x="105" y="193" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="600">Continuidad</text>
+
+                <rect x="185" y="130" width="150" height="84" rx="10" fill="#F4F7FA" stroke="#4E8F82" stroke-width="1.5" />
+                <text x="260" y="154" text-anchor="middle" fill="#2E6B60" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700">SDD</text>
+                <text x="260" y="170" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">workflow orquestado</text>
+                <rect x="220" y="180" width="80" height="18" rx="9" fill="#4E8F82" opacity="0.12" />
+                <text x="260" y="193" text-anchor="middle" fill="#2E6B60" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="600">Estructura</text>
+
+                <rect x="340" y="130" width="150" height="84" rx="10" fill="#F4F7FA" stroke="#B86F24" stroke-width="1.5" />
+                <text x="415" y="154" text-anchor="middle" fill="#9A5B12" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700">Skills</text>
+                <text x="415" y="170" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9">patrones codificados</text>
+                <rect x="375" y="180" width="80" height="18" rx="9" fill="#B86F24" opacity="0.12" />
+                <text x="415" y="193" text-anchor="middle" fill="#9A5B12" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="600">Consistencia</text>
+
+                <path d="M105 214 L254 230" stroke="#6C7A8C" stroke-width="1.2" />
+                <path d="M260 214 L260 230" stroke="#6C7A8C" stroke-width="1.2" />
+                <path d="M415 214 L266 230" stroke="#6C7A8C" stroke-width="1.2" />
+                <circle cx="260" cy="232" r="4" fill="#B86F24" />
+
+                <rect x="30" y="246" width="460" height="50" rx="10" fill="#F4F7FA" stroke="#B8C2D0" stroke-width="1.2" />
+                <text x="260" y="268" text-anchor="middle" fill="#1B2029" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700">Sistema profesional, no un prompt suelto</text>
+                <text x="260" y="286" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">requerimientos + arquitectura + memoria + workflow + patrones</text>
+
+                <text x="260" y="316" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9.5" font-style="italic">sin amnesia, sin degradación, sin desconexión</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="15"
+            data-module="4"
+            data-tone="purple"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">16 &middot; La respuesta</p>
+              <h2>Vincular el proceso: de los requisitos al código</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Seis fases, un artefacto cada una:</strong>
+                  entender, decidir, descomponer, traducir, construir y
+                  cerrar —cada una deja algo verificable, no solo código.
+                </li>
+                <li>
+                  <strong>La primera fase es la que nos ocupa:</strong>
+                  entender conecta requisitos, flujo de preguntas y el código
+                  que se va a producir —ahí nace el PRD y las épicas.
+                </li>
+                <li>
+                  <strong>El agente necesita una base de conocimiento:</strong>
+                  metodologías de levantamiento de requisitos —preguntas de
+                  aclaración, criterios de aceptación, casos borde—
+                  convertidas en reglas que el agente sigue, no en intuición.
+                </li>
+                <li>
+                  <strong>Trazabilidad de punta a punta:</strong> cada línea
+                  de código se rastrea hasta el requisito que la justifica
+                  —el mismo principio del reparto por etapa que ya vimos.
+                </li>
+                <li>
+                  <strong>Orden estricto:</strong> ninguna fase empieza sin
+                  que la anterior deje su artefacto —brief antes de PRD, PRD
+                  antes de épicas.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 360"
+                xmlns="http://www.w3.org/2000/svg"
+                font-family="Space Grotesk,sans-serif"
+                role="img"
+                aria-label="Diagrama de seis fases —entender, decidir, descomponer, traducir, construir, cerrar— con trazabilidad de extremo a extremo; entender y descomponer resaltadas como la primera etapa, donde nacen el PRD y las epicas"
+              >
+                <defs>
+                  <marker
+                    id="sw1-arrow"
+                    viewBox="0 0 10 10"
+                    refX="10"
+                    refY="5"
+                    markerWidth="5"
+                    markerHeight="5"
+                    orient="auto-start-reverse"
+                  >
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#B8C2D0" />
+                  </marker>
+                </defs>
+                <text x="260" y="16" text-anchor="middle" fill="#454F61" font-size="11" letter-spacing="2">DE LOS REQUISITOS AL CÓDIGO</text>
+                <text x="260" y="30" text-anchor="middle" fill="#5B6472" font-size="8" font-style="italic">cada fase produce algo que se puede verificar</text>
+
+                <g>
+                  <rect x="14" y="42" width="150" height="78" rx="10" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.8" />
+                  <circle cx="34" cy="62" r="10" fill="none" stroke="#4E93B0" stroke-width="1" opacity="0.6" />
+                  <text x="34" y="66" text-anchor="middle" fill="#2C6B87" font-size="10" font-weight="700">1</text>
+                  <text x="52" y="66" fill="#1B2029" font-size="11" font-weight="700">Entender</text>
+                  <line x1="28" y1="78" x2="150" y2="78" stroke="#B8C2D0" stroke-width="1" opacity="0.5" />
+                  <text x="28" y="96" fill="#454F61" font-size="9.5">brief y PRD</text>
+                  <text x="28" y="110" fill="#2C6B87" font-size="8" opacity="0.9">requisitos numerados</text>
+                </g>
+
+                <line x1="168" y1="81" x2="181" y2="81" stroke="#B8C2D0" stroke-width="1.5" marker-end="url(#sw1-arrow)" />
+
+                <g>
+                  <rect x="185" y="42" width="150" height="78" rx="10" fill="#F4F7FA" stroke="#7189B8" stroke-width="1.5" />
+                  <circle cx="205" cy="62" r="10" fill="none" stroke="#7189B8" stroke-width="1" opacity="0.6" />
+                  <text x="205" y="66" text-anchor="middle" fill="#4A5F8C" font-size="10" font-weight="700">2</text>
+                  <text x="223" y="66" fill="#1B2029" font-size="11" font-weight="700">Decidir</text>
+                  <line x1="199" y1="78" x2="321" y2="78" stroke="#B8C2D0" stroke-width="1" opacity="0.5" />
+                  <text x="199" y="96" fill="#454F61" font-size="9.5">arquitectura y UX</text>
+                  <text x="199" y="110" fill="#4A5F8C" font-size="8" opacity="0.85">se decide una sola vez</text>
+                </g>
+
+                <line x1="339" y1="81" x2="352" y2="81" stroke="#B8C2D0" stroke-width="1.5" marker-end="url(#sw1-arrow)" />
+
+                <g>
+                  <rect x="356" y="42" width="150" height="78" rx="10" fill="#EDF1F7" stroke="#66862E" stroke-width="1.8" />
+                  <circle cx="376" cy="62" r="10" fill="none" stroke="#66862E" stroke-width="1" opacity="0.6" />
+                  <text x="376" y="66" text-anchor="middle" fill="#4F6B23" font-size="10" font-weight="700">3</text>
+                  <text x="394" y="66" fill="#1B2029" font-size="11" font-weight="700">Descomponer</text>
+                  <line x1="370" y1="78" x2="492" y2="78" stroke="#B8C2D0" stroke-width="1" opacity="0.5" />
+                  <text x="370" y="96" fill="#454F61" font-size="9.5">épicas e historias</text>
+                  <text x="370" y="110" fill="#4F6B23" font-size="8" opacity="0.9">Given / When / Then</text>
+                </g>
+
+                <path d="M 431 120 L 431 129 L 89 129 L 89 136" fill="none" stroke="#B8C2D0" stroke-width="1.5" marker-end="url(#sw1-arrow)" />
+
+                <g>
+                  <rect x="14" y="140" width="150" height="72" rx="10" fill="#F4F7FA" stroke="#B86F24" stroke-width="1.5" />
+                  <circle cx="34" cy="158" r="10" fill="none" stroke="#B86F24" stroke-width="1" opacity="0.6" />
+                  <text x="34" y="162" text-anchor="middle" fill="#9A5B12" font-size="10" font-weight="700">4</text>
+                  <text x="52" y="162" fill="#1B2029" font-size="11" font-weight="700">Traducir</text>
+                  <line x1="28" y1="174" x2="150" y2="174" stroke="#B8C2D0" stroke-width="1" opacity="0.5" />
+                  <text x="28" y="192" fill="#454F61" font-size="9.5">contrato ejecutable</text>
+                  <text x="28" y="204" fill="#9A5B12" font-size="8" opacity="0.85">determinista</text>
+                </g>
+
+                <line x1="168" y1="177" x2="181" y2="177" stroke="#B8C2D0" stroke-width="1.5" marker-end="url(#sw1-arrow)" />
+
+                <g>
+                  <rect x="185" y="140" width="150" height="72" rx="10" fill="#F4F7FA" stroke="#4E8F82" stroke-width="1.5" />
+                  <circle cx="205" cy="158" r="10" fill="none" stroke="#4E8F82" stroke-width="1" opacity="0.6" />
+                  <text x="205" y="162" text-anchor="middle" fill="#2E6B60" font-size="10" font-weight="700">5</text>
+                  <text x="223" y="162" fill="#1B2029" font-size="11" font-weight="700">Construir</text>
+                  <line x1="199" y1="174" x2="321" y2="174" stroke="#B8C2D0" stroke-width="1" opacity="0.5" />
+                  <text x="199" y="192" fill="#454F61" font-size="9.5">código que cumple</text>
+                  <text x="199" y="204" fill="#2E6B60" font-size="8" opacity="0.85">los escenarios son los tests</text>
+                </g>
+
+                <line x1="339" y1="177" x2="352" y2="177" stroke="#B8C2D0" stroke-width="1.5" marker-end="url(#sw1-arrow)" />
+
+                <g>
+                  <rect x="356" y="140" width="150" height="72" rx="10" fill="#F4F7FA" stroke="#C55A7B" stroke-width="1.5" />
+                  <circle cx="376" cy="158" r="10" fill="none" stroke="#C55A7B" stroke-width="1" opacity="0.6" />
+                  <text x="376" y="162" text-anchor="middle" fill="#A83A59" font-size="10" font-weight="700">6</text>
+                  <text x="394" y="162" fill="#1B2029" font-size="11" font-weight="700">Cerrar</text>
+                  <line x1="370" y1="174" x2="492" y2="174" stroke="#B8C2D0" stroke-width="1" opacity="0.5" />
+                  <text x="370" y="192" fill="#454F61" font-size="9.5">el contrato es la verdad</text>
+                  <text x="370" y="204" fill="#A83A59" font-size="8" opacity="0.85">mide lo que llegue después</text>
+                </g>
+
+                <rect x="14" y="234" width="150" height="24" rx="8" fill="#EDF1F7" stroke="#4E93B0" stroke-width="1.2" />
+                <text x="89" y="250" text-anchor="middle" fill="#2C6B87" font-size="9" font-weight="600">1&ndash;3: la etapa de hoy</text>
+                <text x="260" y="250" text-anchor="middle" fill="#5B6472" font-size="9">requisitos &rarr; flujo &rarr; preguntas &rarr; PRD &rarr; épicas</text>
+
+                <rect x="14" y="270" width="492" height="52" rx="10" fill="none" stroke="#B8C2D0" stroke-width="1" stroke-dasharray="4 4" />
+                <text x="260" y="290" text-anchor="middle" fill="#1B2029" font-size="10" font-weight="700">trazabilidad</text>
+                <line x1="60" y1="300" x2="460" y2="300" stroke="#B8C2D0" stroke-width="1.5" marker-start="url(#sw1-arrow)" marker-end="url(#sw1-arrow)" />
+                <text x="260" y="316" text-anchor="middle" fill="#5B6472" font-size="9">cada línea de código, el requisito que la justifica</text>
+
+                <text x="260" y="344" text-anchor="middle" fill="#454F61" font-size="9.5" font-style="italic">brief · PRD · épicas: la base de conocimiento que hereda el agente</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="16"
+            data-module="4"
+            data-tone="magenta"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">17 &middot; La respuesta</p>
+              <h2>Esfuerzo por etapa: qué queda escrito, no cuánto tardó</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>No se mide en horas:</strong> se mide en
+                  decisiones, cambios, descartes y supuestos por fase —brief,
+                  PRD, arquitectura, UX.
+                </li>
+                <li>
+                  <strong>Cada barra es trazable:</strong> un clic abre las
+                  entradas exactas que la componen, no un resumen genérico.
+                </li>
+                <li>
+                  <strong>Del PRD al código, con números:</strong> 30
+                  requisitos funcionales se descomponen en 4 épicas, 26
+                  historias, 26 specs y 382 tareas.
+                </li>
+                <li>
+                  <strong>Los cambios de alcance también quedan
+                  registrados:</strong> no desaparecen, se documentan como
+                  cualquier otra decisión.
+                </li>
+                <li>
+                  <strong>Esto es lo que un PRD suelto nunca da:</strong>
+                  evidencia de por qué el sistema terminó como terminó.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <img
+                src="assets/images/screenshot-esfuerzo-etapa.jpeg"
+                alt="Panel de esfuerzo por etapa: decisiones, cambios, descartes y supuestos para brief, PRD, arquitectura y UX, y descomposicion del PRD al codigo en 4 epicas, 26 historias, 26 specs y 382 tareas"
+              />
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="17"
+            data-module="4"
+            data-tone="magenta"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">18 &middot; La respuesta</p>
+              <h2>Del PRD al código, sin saltos</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Un tablero, cuatro columnas:</strong> requisitos del
+                  PRD, épicas, historias de usuario y specs generadas —en ese
+                  orden, sin atajos.
+                </li>
+                <li>
+                  <strong>Cada requisito tiene número y cambios:</strong>
+                  FR-1, FR-2... con su historial de modificaciones visible,
+                  no perdido en un chat.
+                </li>
+                <li>
+                  <strong>Las historias heredan sus requisitos:</strong> cada
+                  historia referencia los FR/UX-DR que la justifican, con
+                  criterios de aceptación explícitos.
+                </li>
+                <li>
+                  <strong>Las specs se generan, no se redactan:</strong> el
+                  puente hacia el código ejecutable sale del mismo tablero,
+                  con estado de avance por tarea.
+                </li>
+                <li>
+                  <strong>Esto es trazabilidad, no un diagrama bonito:</strong>
+                  se puede navegar de un requisito a su código y de vuelta.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <img
+                src="assets/images/screenshot-kanban-prd-epics.jpeg"
+                alt="Tablero kanban que conecta requisitos del PRD, epicas, historias de usuario y specs generadas, mostrando trazabilidad de extremo a extremo"
+              />
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="18"
+            data-module="4"
+            data-tone="magenta"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">19 &middot; La respuesta</p>
+              <h2>El PRD como documento vivo, no un acta de reunión</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Un propósito declarado:</strong> el documento dice
+                  explícitamente quién lo consume —diseño, arquitectura,
+                  épicas— y de qué depende.
+                </li>
+                <li>
+                  <strong>Vocabulario obligatorio:</strong> el glosario del
+                  PRD es la fuente de verdad; requisitos, recorridos y
+                  métricas usan esos términos literalmente.
+                </li>
+                <li>
+                  <strong>Requisitos numerados y estables:</strong> FR-1...
+                  FR-30 sobreviven a cualquier reorganización del documento
+                  —las referencias no se rompen.
+                </li>
+                <li>
+                  <strong>Los supuestos quedan marcados:</strong> no se
+                  esconden en la prosa, se etiquetan y se recopilan aparte.
+                </li>
+                <li>
+                  <strong>Esto es lo que el agente lee antes de escribir
+                  código:</strong> no una conversación de chat, un documento
+                  versionado.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <img
+                src="assets/images/screenshot-prd-documento.jpeg"
+                alt="Documento PRD con proposito, vision y por que ahora, consumido por las fases de diseno, arquitectura y epicas del flujo"
+              />
+            </figure>
+          </article>
+
+          <article
+            class="slide"
+            data-index="19"
+            data-module="4"
+            data-tone="magenta"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">20 &middot; La respuesta</p>
+              <h2>Memoria del proyecto: el historial que no se pierde</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>Decisiones, cambios e impacto:</strong> cada
+                  entrada dice qué se decidió, qué cambió y por qué, en
+                  orden cronológico.
+                </li>
+                <li>
+                  <strong>Con motivo, no solo con el qué:</strong> «dos
+                  documentos que se contradigan es peor que cualquiera de los
+                  dos solo» —la razón queda escrita junto a la decisión.
+                </li>
+                <li>
+                  <strong>Cada decisión apunta a su archivo:</strong> el
+                  historial referencia el documento exacto que la registró,
+                  consultable por etapa.
+                </li>
+                <li>
+                  <strong>Esto es lo que cierra el riesgo de memoria
+                  escasa:</strong> el agente no necesita que el equipo se lo
+                  vuelva a explicar.
+                </li>
+                <li>
+                  <strong>El costo baja con el tiempo:</strong> cada sesión
+                  nueva parte de este historial, no de cero.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <img
+                src="assets/images/screenshot-memoria-proyecto.jpeg"
+                alt="Memoria del proyecto: historial paso a paso de decisiones y cambios de arquitectura en orden cronologico, con referencia al archivo de origen"
+              />
+            </figure>
+          </article>
+
+          <!-- M5: 6. UN-SpecWeaver -->
+
+          <article
+            class="slide"
+            data-index="20"
+            data-module="5"
+            data-tone="magenta"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">21 &middot; UN-SpecWeaver</p>
+              <h2>El stack SPEC-WEAVER: qué se conecta y qué no (todavía)</h2>
+              <ul class="slide-list">
+                <li>
+                  <strong>SPEC-WEAVER es el centro, no el único camino:</strong>
+                  cada pieza del stack se conecta o se reemplaza sin tocar
+                  las demás.
+                </li>
+                <li>
+                  <strong>Repositorios, abierto:</strong> cualquier repo Git
+                  —GitHub, Azure DevOps o el que use el equipo.
+                </li>
+                <li>
+                  <strong>Tareas, en roadmap:</strong> Azure Boards, Trello y
+                  GitHub Issues están en integración —el resto del stack no
+                  espera a que estén listos.
+                </li>
+                <li>
+                  <strong>Especificaciones y memoria, ya conectados:</strong>
+                  OpenSpec, SDD y ODD para el flujo de specs; Engram, Graphify
+                  o Memento para la memoria persistente.
+                </li>
+                <li>
+                  <strong>Requerimientos, deliberadamente abierto:</strong>
+                  BMAD, GitHub Spec Kit o Kiro —o un paquete de subagentes
+                  propio, si el equipo ya tiene su metodología.
+                </li>
+              </ul>
+            </div>
+            <figure class="slide-figure">
+              <svg
+                viewBox="0 0 520 500"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Diagrama grande de nodo central SPEC-WEAVER conectado a cinco piezas del stack con iconos: repositorios (abierto: GitHub, Azure DevOps), tareas (en roadmap: Azure Boards, Trello, GitHub Issues), especificaciones (ya conecta: OpenSpec, SDD, ODD), memoria (ya conecta: Engram, Graphify, Memento) y requerimientos (abierto: BMAD, GitHub Spec Kit, Kiro), con leyenda de estados"
+              >
+                <text x="260" y="20" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="700" letter-spacing="2">EL STACK SPEC-WEAVER</text>
+                <text x="260" y="37" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9.5" font-style="italic">cada pieza se conecta o se reemplaza</text>
+
+                <path d="M260 258 L119 104" stroke="#B8C2D0" stroke-width="1.5" />
+                <path d="M260 258 L401 104" stroke="#B8C2D0" stroke-width="1.5" />
+                <path d="M260 258 L97 260" stroke="#B8C2D0" stroke-width="1.5" />
+                <path d="M260 258 L424 260" stroke="#B8C2D0" stroke-width="1.5" />
+                <path d="M260 258 L260 403" stroke="#B8C2D0" stroke-width="1.5" />
+
+                <!-- Repositorios -->
+                <rect x="14" y="50" width="210" height="116" rx="14" fill="#F4F7FA" stroke="#4E93B0" stroke-width="1.8" />
+                <text x="119" y="78" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Repositorios</text>
+                <line x1="105" y1="94" x2="105" y2="114" stroke="#4E93B0" stroke-width="2.2" />
+                <circle cx="105" cy="94" r="4.5" fill="#4E93B0" />
+                <circle cx="105" cy="114" r="4.5" fill="#4E93B0" />
+                <path d="M105 104 Q118 104 133 94" stroke="#4E93B0" stroke-width="2.2" fill="none" />
+                <circle cx="133" cy="94" r="4.5" fill="#4E93B0" />
+                <rect x="24" y="119" width="66" height="19" rx="9.5" fill="#4E93B0" opacity="0.14" />
+                <text x="57" y="132" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">GitHub</text>
+                <rect x="96" y="119" width="118" height="19" rx="9.5" fill="#4E93B0" opacity="0.14" />
+                <text x="155" y="132" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">Azure DevOps</text>
+                <circle cx="34" cy="152" r="4.5" fill="#4E93B0" />
+                <text x="44" y="155.5" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Abierto: cualquiera</text>
+
+                <!-- Especificaciones -->
+                <rect x="296" y="50" width="210" height="116" rx="14" fill="#F4F7FA" stroke="#66862E" stroke-width="1.8" />
+                <text x="401" y="78" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Especificaciones</text>
+                <rect x="388" y="90" width="26" height="32" rx="3" fill="none" stroke="#66862E" stroke-width="2.2" />
+                <line x1="393" y1="100" x2="409" y2="100" stroke="#66862E" stroke-width="1.8" />
+                <line x1="393" y1="107" x2="409" y2="107" stroke="#66862E" stroke-width="1.8" />
+                <line x1="393" y1="114" x2="403" y2="114" stroke="#66862E" stroke-width="1.8" />
+                <rect x="306" y="123" width="70" height="19" rx="9.5" fill="#66862E" opacity="0.14" />
+                <text x="341" y="136" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">OpenSpec</text>
+                <rect x="380" y="123" width="46" height="19" rx="9.5" fill="#66862E" opacity="0.14" />
+                <text x="403" y="136" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">SDD</text>
+                <rect x="430" y="123" width="46" height="19" rx="9.5" fill="#66862E" opacity="0.14" />
+                <text x="453" y="136" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">ODD</text>
+                <circle cx="316" cy="152" r="4.5" fill="#66862E" />
+                <text x="326" y="155.5" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Ya conecta</text>
+
+                <!-- Memoria -->
+                <rect x="4" y="200" width="185" height="120" rx="14" fill="#F4F7FA" stroke="#D45FAE" stroke-width="1.8" />
+                <text x="97" y="228" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Memoria</text>
+                <ellipse cx="97" cy="246" rx="16" ry="6" fill="none" stroke="#D45FAE" stroke-width="2.2" />
+                <path d="M81 246 v16 c0 3.5 7 6.5 16 6.5 s16-3 16-6.5 v-16" fill="none" stroke="#D45FAE" stroke-width="2.2" />
+                <rect x="12" y="278" width="56" height="19" rx="9.5" fill="#D45FAE" opacity="0.14" />
+                <text x="40" y="291" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Engram</text>
+                <rect x="72" y="278" width="60" height="19" rx="9.5" fill="#D45FAE" opacity="0.14" />
+                <text x="102" y="291" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Graphify</text>
+                <rect x="136" y="278" width="60" height="19" rx="9.5" fill="#D45FAE" opacity="0.14" />
+                <text x="166" y="291" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Memento</text>
+                <circle cx="22" cy="304" r="4.5" fill="#66862E" />
+                <text x="32" y="307.5" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Ya conecta</text>
+
+                <!-- Requerimientos -->
+                <rect x="331" y="200" width="185" height="120" rx="14" fill="#F4F7FA" stroke="#A8781A" stroke-width="1.8" />
+                <text x="424" y="228" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Requerimientos</text>
+                <circle cx="424" cy="242" r="5.5" fill="none" stroke="#A8781A" stroke-width="2.2" />
+                <circle cx="410" cy="264" r="5.5" fill="none" stroke="#A8781A" stroke-width="2.2" />
+                <circle cx="438" cy="264" r="5.5" fill="none" stroke="#A8781A" stroke-width="2.2" />
+                <line x1="420" y1="248" x2="413" y2="258" stroke="#A8781A" stroke-width="1.8" />
+                <line x1="428" y1="248" x2="435" y2="258" stroke="#A8781A" stroke-width="1.8" />
+                <line x1="416" y1="264" x2="432" y2="264" stroke="#A8781A" stroke-width="1.8" />
+                <rect x="341" y="278" width="52" height="19" rx="9.5" fill="#A8781A" opacity="0.14" />
+                <text x="367" y="291" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">BMAD</text>
+                <rect x="397" y="278" width="66" height="19" rx="9.5" fill="#A8781A" opacity="0.14" />
+                <text x="430" y="291" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="700">Spec Kit</text>
+                <rect x="467" y="278" width="44" height="19" rx="9.5" fill="#A8781A" opacity="0.14" />
+                <text x="489" y="291" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Kiro</text>
+                <circle cx="349" cy="304" r="4.5" fill="#4E93B0" />
+                <text x="359" y="307.5" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Abierto: o subagentes</text>
+
+                <!-- Hub -->
+                <rect x="195" y="213" width="130" height="90" rx="18" fill="#1B2029" stroke="#D45FAE" stroke-width="2.5" />
+                <text x="260" y="253" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk,sans-serif" font-size="16" font-weight="800">SPEC-WEAVER</text>
+                <text x="260" y="272" text-anchor="middle" fill="#E8B8D6" font-family="Space Grotesk,sans-serif" font-size="10">nuestra propuesta</text>
+
+                <!-- Tareas -->
+                <rect x="150" y="338" width="220" height="130" rx="14" fill="#F4F7FA" stroke="#7189B8" stroke-width="1.8" />
+                <text x="260" y="368" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Tareas</text>
+                <rect x="240" y="382" width="10" height="24" rx="3" fill="none" stroke="#7189B8" stroke-width="2.2" />
+                <rect x="255" y="382" width="10" height="24" rx="3" fill="none" stroke="#7189B8" stroke-width="2.2" />
+                <rect x="270" y="382" width="10" height="24" rx="3" fill="none" stroke="#7189B8" stroke-width="2.2" />
+                <rect x="176" y="412" width="90" height="19" rx="9.5" fill="#7189B8" opacity="0.16" />
+                <text x="221" y="425" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Azure Boards</text>
+                <rect x="270" y="412" width="60" height="19" rx="9.5" fill="#7189B8" opacity="0.16" />
+                <text x="300" y="425" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Trello</text>
+                <rect x="214" y="434" width="92" height="19" rx="9.5" fill="#7189B8" opacity="0.16" />
+                <text x="260" y="447" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">GitHub Issues</text>
+                <circle cx="180" cy="458" r="4.5" fill="#B86F24" />
+                <text x="190" y="461.5" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">En roadmap</text>
+
+                <!-- Leyenda -->
+                <circle cx="120" cy="486" r="4.5" fill="#66862E" />
+                <text x="130" y="489.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">ya conecta</text>
+                <circle cx="240" cy="486" r="4.5" fill="#4E93B0" />
+                <text x="250" y="489.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">abierto / agnóstico</text>
+                <circle cx="400" cy="486" r="4.5" fill="#B86F24" />
+                <text x="410" y="489.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">en roadmap</text>
+              </svg>
+            </figure>
+          </article>
+
+          <article
+            class="slide is-wide"
+            data-index="21"
+            data-module="3"
+            data-tone="blue"
+          >
+            <div class="slide-content">
+              <p class="slide-kicker">22 &middot; Evidencia</p>
+              <h2>Fuentes</h2>
+              <ul class="slide-list slide-references">
+                <li>
+                  Becker, J., Rush, N., Barnes, E., &amp; Rein, D. (2025).
+                  <em>Measuring the impact of early-2025 AI on experienced
+                  open-source developer productivity</em>. METR.
+                  <a href="https://arxiv.org/abs/2507.09089"
+                    >https://arxiv.org/abs/2507.09089</a
+                  >
+                </li>
+                <li>
+                  Chatlatanagulchai, W., Li, H., Kashiwa, Y., Reid, B.,
+                  Thonglek, K., Leelaprute, P., Rungsawang, A., Manaskasemsak,
+                  B., Adams, B., Hassan, A. E., &amp; Iida, H. (2025).
+                  <em>Agent READMEs: An empirical study of context files for
+                  agentic coding</em>. arXiv:2511.12884.
+                  <a href="https://arxiv.org/abs/2511.12884"
+                    >https://arxiv.org/abs/2511.12884</a
+                  >
+                </li>
+                <li>
+                  Denisov-Blanch, Y. <em>Stanford Software Engineering
+                  Productivity Research</em>. Stanford University.
+                  <a href="https://softwareengineeringproductivity.stanford.edu/"
+                    >https://softwareengineeringproductivity.stanford.edu/</a
+                  >
+                </li>
+                <li>
+                  GitClear. (2025). <em>AI Copilot code quality: 2025
+                  data</em>.
+                  <a href="https://www.gitclear.com/ai_assistant_code_quality_2025_research"
+                    >https://www.gitclear.com/&hellip;</a
+                  >
+                </li>
+                <li>
+                  Guo, D., Yang, D., Zhang, H., Song, J., Wang, P., Zhu, Q.,
+                  Xu, R., Zhang, R., Ma, S., Bi, X., Zhang, X., &amp; Zhang,
+                  Z. (2025). DeepSeek-R1 incentivizes reasoning in LLMs
+                  through reinforcement learning. <em>Nature</em>,
+                  <em>645</em>(8081), 633&ndash;638.
+                  <a href="https://doi.org/10.1038/s41586-025-09422-z"
+                    >https://doi.org/10.1038/s41586-025-09422-z</a
+                  >
+                </li>
+                <li>
+                  Harvey, N., &amp; DeBellis, D. (2025). <em>DORA: State of
+                  AI-assisted software development 2025</em>. Google Cloud /
+                  DORA.
+                  <a href="https://dora.dev/dora-report-2025/"
+                    >https://dora.dev/dora-report-2025/</a
+                  >
+                </li>
+                <li>
+                  Hou, X., Zhao, Y., Liu, Y., Yang, Z., Wang, K., Li, L.,
+                  Luo, X., Lo, D., Grundy, J., &amp; Wang, H. (2024). Large
+                  language models for software engineering: A systematic
+                  literature review. <em>ACM Transactions on Software
+                  Engineering and Methodology</em>, <em>33</em>(8), 1&ndash;79.
+                  <a href="https://doi.org/10.1145/3695988"
+                    >https://doi.org/10.1145/3695988</a
+                  >
+                </li>
+                <li>
+                  Huang, H., Jaisri, P., Shimizu, S., Chen, L., Nakashima, S.,
+                  &amp; Rodríguez-Pérez, G. (2026). <em>More code, less
+                  reuse: Investigating code quality and reviewer sentiment
+                  towards AI-generated pull requests</em>. arXiv:2601.21276.
+                  <a href="https://arxiv.org/abs/2601.21276"
+                    >https://arxiv.org/abs/2601.21276</a
+                  >
+                </li>
+                <li>
+                  Jiménez, C. E., Yang, J., Wettig, A., Yao, S., Pei, K.,
+                  Press, O., &amp; Narasimhan, K. (2024). <em>SWE-bench: Can
+                  language models resolve real-world GitHub issues?</em>
+                  <a href="https://www.swebench.com/"
+                    >https://www.swebench.com/</a
+                  >
+                </li>
+                <li>
+                  Kalliamvakou, E. (2024). <em>Research: Quantifying GitHub
+                  Copilot&rsquo;s impact on developer productivity and
+                  happiness</em>. GitHub Blog.
+                  <a href="https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/"
+                    >https://github.blog/news-insights/research/&hellip;</a
+                  >
+                </li>
+                <li>
+                  Karaci Deniz, B., Gnanasambandam, C., Harrysson, M., Hussin,
+                  A., &amp; Srivastava, S. (2023). <em>Unleashing developer
+                  productivity with generative AI</em>. McKinsey Digital.
+                  <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/unleashing-developer-productivity-with-generative-ai"
+                    >https://www.mckinsey.com/&hellip;</a
+                  >
+                </li>
+                <li>
+                  Paradis, E., Grey, K., Madison, Q., Nam, D., Macvean, A.,
+                  Meimand, V., Zhang, N., Ferrari-Church, B., &amp; Chandra, S.
+                  (2024). <em>How much does AI impact development speed? An
+                  enterprise-based randomized controlled trial</em>.
+                  arXiv:2410.12944.
+                  <a href="https://doi.org/10.48550/arXiv.2410.12944"
+                    >https://doi.org/10.48550/arXiv.2410.12944</a
+                  >
+                </li>
+                <li>
+                  Sonar. (2026). <em>State of code developer survey
+                  report</em>.
+                  <a href="https://www.sonarsource.com/state-of-code-developer-survey-report.pdf"
+                    >https://www.sonarsource.com/&hellip;</a
+                  >
+                </li>
+                <li>
+                  Veracode. (2025). <em>2025 GenAI code security report</em>.
+                  <a href="https://www.veracode.com/resources/analyst-reports/2025-genai-code-security-report/"
+                    >https://www.veracode.com/&hellip;</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </main>
+      </div>
+
+      <footer class="deck-controls">
+        <p class="running-title">
+          Agentes de IA en el ciclo de vida del desarrollo. Propuesta.
+          DIEEC-UNAL-Manizales.
+        </p>
+        <img
+          class="controls-logo controls-logo-unal"
+          src="assets/images/escudo_unal.png"
+          alt="Universidad Nacional de Colombia"
+        />
+        <img
+          class="controls-logo"
+          src="assets/images/logo_labIA.png"
+          alt="Laboratorio de Inteligencia Artificial UNAL"
+        />
+        <button type="button" id="prev" class="ghost" aria-label="Slide anterior" title="Anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 5 L8 12 L15 19" />
+          </svg>
+        </button>
+        <span id="counter">01 / 22</span>
+        <button type="button" id="next" class="solid" aria-label="Slide siguiente" title="Siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 5 L16 12 L9 19" />
+          </svg>
+        </button>
+      </footer>
+    </div>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
