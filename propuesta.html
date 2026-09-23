@@ -40,7 +40,7 @@
           <div class="rail-dots" id="dots-4"></div>
         </div>
         <div class="rail-module" data-module="5">
-          <button class="rail-title" data-first="20">6. UN-SpecWeaver</button>
+          <button class="rail-title" data-first="21">6. UN-SpecWeaver</button>
           <div class="rail-dots" id="dots-5"></div>
         </div>
       </nav>
@@ -2201,137 +2201,143 @@
               <ul class="slide-list">
                 <li>
                   <strong>SPEC-WEAVER es el centro, no el único camino:</strong>
-                  cada pieza del stack se conecta o se reemplaza sin tocar
-                  las demás.
+                  cada pieza se conecta o se reemplaza sin tocar las demás.
                 </li>
                 <li>
                   <strong>Repositorios, abierto:</strong> cualquier repo Git
-                  —GitHub, Azure DevOps o el que use el equipo.
-                </li>
-                <li>
-                  <strong>Tareas, en roadmap:</strong> Azure Boards, Trello y
-                  GitHub Issues están en integración —el resto del stack no
-                  espera a que estén listos.
+                  —GitHub, GitLab o Azure DevOps.
                 </li>
                 <li>
                   <strong>Especificaciones y memoria, ya conectados:</strong>
-                  OpenSpec, SDD y ODD para el flujo de specs; Engram, Graphify
-                  o Memento para la memoria persistente.
+                  OpenSpec, SDD y ODD; Engram, Graphify o Memento.
                 </li>
                 <li>
                   <strong>Requerimientos, deliberadamente abierto:</strong>
-                  BMAD, GitHub Spec Kit o Kiro —o un paquete de subagentes
-                  propio, si el equipo ya tiene su metodología.
+                  BMAD, Spec Kit o Kiro —o un paquete de subagentes propio.
+                </li>
+                <li>
+                  <strong>El ciclo DevOps, en integración:</strong> cada etapa
+                  habla con su herramienta —Jira y Azure Boards en tareas,
+                  GitHub y GitLab en código, GH Actions, Jenkins y Sonar en CI.
+                </li>
+                <li>
+                  <strong>Agnóstico por diseño:</strong> SPEC-WEAVER se conecta
+                  a cualquier herramienta —Jira, HubSpot, Monday, Miro…— vía MCP
+                  o API, y la cambias sin tocar el resto.
                 </li>
               </ul>
             </div>
             <figure class="slide-figure">
               <svg
-                viewBox="0 0 520 500"
+                viewBox="0 0 520 632"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 role="img"
-                aria-label="Diagrama grande de nodo central SPEC-WEAVER conectado a cinco piezas del stack con iconos: repositorios (abierto: GitHub, Azure DevOps), tareas (en roadmap: Azure Boards, Trello, GitHub Issues), especificaciones (ya conecta: OpenSpec, SDD, ODD), memoria (ya conecta: Engram, Graphify, Memento) y requerimientos (abierto: BMAD, GitHub Spec Kit, Kiro), con leyenda de estados"
+                aria-label="Diagrama en dos zonas. Arriba, el hub SPEC-WEAVER conectado a cuatro piezas del stack: repositorios (GitHub, GitLab, Azure DevOps, abierto), especificaciones (OpenSpec, SDD, ODD, ya conecta), memoria (Engram, Graphify, Memento, ya conecta) y requerimientos (BMAD, Spec Kit, Kiro, abierto). Abajo, el ciclo DevOps en seis etapas encadenadas, cada una con sus herramientas y todas en roadmap: planificar (Jira, Azure Boards, Linear), especificar (Confluence, Notion), construir (GitHub, GitLab, Bitbucket), revisar (GitHub PR, GitLab MR), verificar (GH Actions, Jenkins, Sonar y Sentry) y cerrar o avisar (estado Jira, changelog, Slack); una flecha de retorno lleva el estado y un comentario de vuelta a Jira. Una franja indica que SPEC-WEAVER es agnostico y se conecta a cualquier herramienta via MCP o API, como HubSpot, Monday o Miro, y Slack, MS Teams y Discord notifican en todo el ciclo"
               >
+                <defs>
+                  <marker id="ah22" markerWidth="8" markerHeight="8" refX="5" refY="2.6" orient="auto"><path d="M0 0 L5.5 2.6 L0 5.2 z" fill="#7189B8" /></marker>
+                </defs>
+
                 <text x="260" y="20" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="700" letter-spacing="2">EL STACK SPEC-WEAVER</text>
-                <text x="260" y="37" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9.5" font-style="italic">cada pieza se conecta o se reemplaza</text>
+                <text x="260" y="36" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9.5" font-style="italic">cada pieza se conecta o se reemplaza</text>
 
-                <path d="M260 258 L119 104" stroke="#B8C2D0" stroke-width="1.5" />
-                <path d="M260 258 L401 104" stroke="#B8C2D0" stroke-width="1.5" />
-                <path d="M260 258 L97 260" stroke="#B8C2D0" stroke-width="1.5" />
-                <path d="M260 258 L424 260" stroke="#B8C2D0" stroke-width="1.5" />
-                <path d="M260 258 L260 403" stroke="#B8C2D0" stroke-width="1.5" />
+                <!-- spokes -->
+                <path d="M260 142 L91 82" stroke="#B8C2D0" stroke-width="1.4" />
+                <path d="M260 142 L429 82" stroke="#B8C2D0" stroke-width="1.4" />
+                <path d="M260 142 L91 202" stroke="#B8C2D0" stroke-width="1.4" />
+                <path d="M260 142 L429 202" stroke="#B8C2D0" stroke-width="1.4" />
 
-                <!-- Repositorios -->
-                <rect x="14" y="50" width="210" height="116" rx="14" fill="#F4F7FA" stroke="#4E93B0" stroke-width="1.8" />
-                <text x="119" y="78" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Repositorios</text>
-                <line x1="105" y1="94" x2="105" y2="114" stroke="#4E93B0" stroke-width="2.2" />
-                <circle cx="105" cy="94" r="4.5" fill="#4E93B0" />
-                <circle cx="105" cy="114" r="4.5" fill="#4E93B0" />
-                <path d="M105 104 Q118 104 133 94" stroke="#4E93B0" stroke-width="2.2" fill="none" />
-                <circle cx="133" cy="94" r="4.5" fill="#4E93B0" />
-                <rect x="24" y="119" width="66" height="19" rx="9.5" fill="#4E93B0" opacity="0.14" />
-                <text x="57" y="132" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">GitHub</text>
-                <rect x="96" y="119" width="118" height="19" rx="9.5" fill="#4E93B0" opacity="0.14" />
-                <text x="155" y="132" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">Azure DevOps</text>
-                <circle cx="34" cy="152" r="4.5" fill="#4E93B0" />
-                <text x="44" y="155.5" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Abierto: cualquiera</text>
+                <rect x="16" y="52" width="150" height="60" rx="12" fill="#F4F7FA" stroke="#4E93B0" stroke-width="1.6" />
+                <text x="91" y="73" text-anchor="middle" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">Repositorios</text>
+                <text x="91" y="91" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">GitHub · GitLab · Azure DevOps</text>
+                <circle cx="28" cy="104" r="4" fill="#4E93B0" />
+                <text x="36" y="107" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">abierto</text>
 
-                <!-- Especificaciones -->
-                <rect x="296" y="50" width="210" height="116" rx="14" fill="#F4F7FA" stroke="#66862E" stroke-width="1.8" />
-                <text x="401" y="78" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Especificaciones</text>
-                <rect x="388" y="90" width="26" height="32" rx="3" fill="none" stroke="#66862E" stroke-width="2.2" />
-                <line x1="393" y1="100" x2="409" y2="100" stroke="#66862E" stroke-width="1.8" />
-                <line x1="393" y1="107" x2="409" y2="107" stroke="#66862E" stroke-width="1.8" />
-                <line x1="393" y1="114" x2="403" y2="114" stroke="#66862E" stroke-width="1.8" />
-                <rect x="306" y="123" width="70" height="19" rx="9.5" fill="#66862E" opacity="0.14" />
-                <text x="341" y="136" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">OpenSpec</text>
-                <rect x="380" y="123" width="46" height="19" rx="9.5" fill="#66862E" opacity="0.14" />
-                <text x="403" y="136" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">SDD</text>
-                <rect x="430" y="123" width="46" height="19" rx="9.5" fill="#66862E" opacity="0.14" />
-                <text x="453" y="136" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">ODD</text>
-                <circle cx="316" cy="152" r="4.5" fill="#66862E" />
-                <text x="326" y="155.5" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Ya conecta</text>
+                <rect x="354" y="52" width="150" height="60" rx="12" fill="#F4F7FA" stroke="#66862E" stroke-width="1.6" />
+                <text x="429" y="73" text-anchor="middle" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">Especificaciones</text>
+                <text x="429" y="91" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">OpenSpec · SDD · ODD</text>
+                <circle cx="366" cy="104" r="4" fill="#66862E" />
+                <text x="374" y="107" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">ya conecta</text>
 
-                <!-- Memoria -->
-                <rect x="4" y="200" width="185" height="120" rx="14" fill="#F4F7FA" stroke="#D45FAE" stroke-width="1.8" />
-                <text x="97" y="228" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Memoria</text>
-                <ellipse cx="97" cy="246" rx="16" ry="6" fill="none" stroke="#D45FAE" stroke-width="2.2" />
-                <path d="M81 246 v16 c0 3.5 7 6.5 16 6.5 s16-3 16-6.5 v-16" fill="none" stroke="#D45FAE" stroke-width="2.2" />
-                <rect x="12" y="278" width="56" height="19" rx="9.5" fill="#D45FAE" opacity="0.14" />
-                <text x="40" y="291" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Engram</text>
-                <rect x="72" y="278" width="60" height="19" rx="9.5" fill="#D45FAE" opacity="0.14" />
-                <text x="102" y="291" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Graphify</text>
-                <rect x="136" y="278" width="60" height="19" rx="9.5" fill="#D45FAE" opacity="0.14" />
-                <text x="166" y="291" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Memento</text>
-                <circle cx="22" cy="304" r="4.5" fill="#66862E" />
-                <text x="32" y="307.5" fill="#4F6B23" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Ya conecta</text>
+                <rect x="16" y="172" width="150" height="60" rx="12" fill="#F4F7FA" stroke="#D45FAE" stroke-width="1.6" />
+                <text x="91" y="193" text-anchor="middle" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">Memoria</text>
+                <text x="91" y="211" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">Engram · Graphify · Memento</text>
+                <circle cx="28" cy="224" r="4" fill="#66862E" />
+                <text x="36" y="227" fill="#A83D89" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">ya conecta</text>
 
-                <!-- Requerimientos -->
-                <rect x="331" y="200" width="185" height="120" rx="14" fill="#F4F7FA" stroke="#A8781A" stroke-width="1.8" />
-                <text x="424" y="228" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Requerimientos</text>
-                <circle cx="424" cy="242" r="5.5" fill="none" stroke="#A8781A" stroke-width="2.2" />
-                <circle cx="410" cy="264" r="5.5" fill="none" stroke="#A8781A" stroke-width="2.2" />
-                <circle cx="438" cy="264" r="5.5" fill="none" stroke="#A8781A" stroke-width="2.2" />
-                <line x1="420" y1="248" x2="413" y2="258" stroke="#A8781A" stroke-width="1.8" />
-                <line x1="428" y1="248" x2="435" y2="258" stroke="#A8781A" stroke-width="1.8" />
-                <line x1="416" y1="264" x2="432" y2="264" stroke="#A8781A" stroke-width="1.8" />
-                <rect x="341" y="278" width="52" height="19" rx="9.5" fill="#A8781A" opacity="0.14" />
-                <text x="367" y="291" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">BMAD</text>
-                <rect x="397" y="278" width="66" height="19" rx="9.5" fill="#A8781A" opacity="0.14" />
-                <text x="430" y="291" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="700">Spec Kit</text>
-                <rect x="467" y="278" width="44" height="19" rx="9.5" fill="#A8781A" opacity="0.14" />
-                <text x="489" y="291" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Kiro</text>
-                <circle cx="349" cy="304" r="4.5" fill="#4E93B0" />
-                <text x="359" y="307.5" fill="#2C6B87" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">Abierto: o subagentes</text>
+                <rect x="354" y="172" width="150" height="60" rx="12" fill="#F4F7FA" stroke="#A8781A" stroke-width="1.6" />
+                <text x="429" y="193" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">Requerimientos</text>
+                <text x="429" y="211" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="8.5">BMAD · Spec Kit · Kiro</text>
+                <circle cx="366" cy="224" r="4" fill="#4E93B0" />
+                <text x="374" y="227" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">abierto</text>
 
-                <!-- Hub -->
-                <rect x="195" y="213" width="130" height="90" rx="18" fill="#1B2029" stroke="#D45FAE" stroke-width="2.5" />
-                <text x="260" y="253" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk,sans-serif" font-size="16" font-weight="800">SPEC-WEAVER</text>
-                <text x="260" y="272" text-anchor="middle" fill="#E8B8D6" font-family="Space Grotesk,sans-serif" font-size="10">nuestra propuesta</text>
+                <!-- hub -->
+                <rect x="205" y="116" width="110" height="52" rx="15" fill="#1B2029" stroke="#D45FAE" stroke-width="2.4" />
+                <text x="260" y="140" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800">SPEC-WEAVER</text>
+                <text x="260" y="157" text-anchor="middle" fill="#E8B8D6" font-family="Space Grotesk,sans-serif" font-size="9">nuestra propuesta</text>
 
-                <!-- Tareas -->
-                <rect x="150" y="338" width="220" height="130" rx="14" fill="#F4F7FA" stroke="#7189B8" stroke-width="1.8" />
-                <text x="260" y="368" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800">Tareas</text>
-                <rect x="240" y="382" width="10" height="24" rx="3" fill="none" stroke="#7189B8" stroke-width="2.2" />
-                <rect x="255" y="382" width="10" height="24" rx="3" fill="none" stroke="#7189B8" stroke-width="2.2" />
-                <rect x="270" y="382" width="10" height="24" rx="3" fill="none" stroke="#7189B8" stroke-width="2.2" />
-                <rect x="176" y="412" width="90" height="19" rx="9.5" fill="#7189B8" opacity="0.16" />
-                <text x="221" y="425" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Azure Boards</text>
-                <rect x="270" y="412" width="60" height="19" rx="9.5" fill="#7189B8" opacity="0.16" />
-                <text x="300" y="425" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">Trello</text>
-                <rect x="214" y="434" width="92" height="19" rx="9.5" fill="#7189B8" opacity="0.16" />
-                <text x="260" y="447" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700">GitHub Issues</text>
-                <circle cx="180" cy="458" r="4.5" fill="#B86F24" />
-                <text x="190" y="461.5" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700">En roadmap</text>
+                <!-- cycle divider -->
+                <line x1="24" y1="250" x2="496" y2="250" stroke="#E0E5EC" stroke-width="1.2" />
+                <text x="238" y="270" text-anchor="middle" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">EL CICLO DEVOPS</text>
+                <rect x="372" y="260" width="86" height="16" rx="8" fill="#B86F24" opacity="0.16" />
+                <text x="415" y="272" text-anchor="middle" fill="#8A5A00" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="700">en roadmap</text>
+                <text x="260" y="286" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" font-style="italic">cada etapa habla con su herramienta</text>
 
-                <!-- Leyenda -->
-                <circle cx="120" cy="486" r="4.5" fill="#66862E" />
-                <text x="130" y="489.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">ya conecta</text>
-                <circle cx="240" cy="486" r="4.5" fill="#4E93B0" />
-                <text x="250" y="489.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">abierto / agnóstico</text>
-                <circle cx="400" cy="486" r="4.5" fill="#B86F24" />
-                <text x="410" y="489.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">en roadmap</text>
+                <!-- flow arrows -->
+                <line x1="166" y1="348" x2="182" y2="348" stroke="#7189B8" stroke-width="1.8" marker-end="url(#ah22)" />
+                <line x1="335" y1="348" x2="351" y2="348" stroke="#7189B8" stroke-width="1.8" marker-end="url(#ah22)" />
+                <line x1="429" y1="398" x2="429" y2="427" stroke="#7189B8" stroke-width="1.8" marker-end="url(#ah22)" />
+                <line x1="354" y1="480" x2="338" y2="480" stroke="#7189B8" stroke-width="1.8" marker-end="url(#ah22)" />
+                <line x1="185" y1="480" x2="169" y2="480" stroke="#7189B8" stroke-width="1.8" marker-end="url(#ah22)" />
+                <line x1="91" y1="428" x2="91" y2="399" stroke="#7189B8" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#ah22)" />
+                <text x="99" y="416" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="7.5" font-style="italic">estado + comentario</text>
+
+
+                <rect x="16" y="298" width="150" height="100" rx="12" fill="#F7F5FA" stroke="#7189B8" stroke-width="1.6" />
+                <text x="91" y="320" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">① Planificar</text>
+                <rect x="26" y="332" width="54" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="53" y="344" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Jira</text>
+                <rect x="94" y="332" width="62" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="125" y="344" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Azure Boards</text>
+                <rect x="60" y="354" width="62" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="91" y="366" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Linear</text>
+
+                <rect x="185" y="298" width="150" height="100" rx="12" fill="#F7F5FA" stroke="#7189B8" stroke-width="1.6" />
+                <text x="260" y="320" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">② Especificar</text>
+                <rect x="195" y="332" width="64" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="227" y="344" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Confluence</text>
+                <rect x="263" y="332" width="62" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="294" y="344" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Notion</text>
+
+                <rect x="354" y="298" width="150" height="100" rx="12" fill="#F7F5FA" stroke="#7189B8" stroke-width="1.6" />
+                <text x="429" y="320" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">③ Construir</text>
+                <rect x="364" y="332" width="58" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="393" y="344" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">GitHub</text>
+                <rect x="432" y="332" width="62" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="463" y="344" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">GitLab</text>
+                <rect x="398" y="354" width="62" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="429" y="366" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Bitbucket</text>
+
+                <rect x="354" y="430" width="150" height="100" rx="12" fill="#F7F5FA" stroke="#7189B8" stroke-width="1.6" />
+                <text x="429" y="452" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">④ Revisar</text>
+                <rect x="362" y="464" width="66" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="395" y="476" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">GitHub PR</text>
+                <rect x="432" y="464" width="66" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="465" y="476" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">GitLab MR</text>
+
+                <rect x="185" y="430" width="150" height="100" rx="12" fill="#F7F5FA" stroke="#7189B8" stroke-width="1.6" />
+                <text x="260" y="452" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">⑤ Verificar</text>
+                <rect x="193" y="464" width="66" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="226" y="476" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">GH Actions</text>
+                <rect x="265" y="464" width="62" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="296" y="476" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Jenkins</text>
+                <rect x="213" y="486" width="96" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="261" y="498" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Sonar · Sentry</text>
+
+                <rect x="16" y="430" width="150" height="100" rx="12" fill="#F7F5FA" stroke="#7189B8" stroke-width="1.6" />
+                <text x="91" y="452" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="12.5" font-weight="800">⑥ Cerrar · avisar</text>
+                <rect x="24" y="464" width="70" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="59" y="476" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">estado Jira</text>
+                <rect x="98" y="464" width="60" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="128" y="476" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">changelog</text>
+                <rect x="60" y="486" width="62" height="17" rx="8.5" fill="#7189B8" opacity="0.16" /><text x="91" y="498" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700">Slack</text>
+
+                <!-- agnostic / MCP band -->
+                <rect x="40" y="540" width="440" height="24" rx="12" fill="#7189B8" opacity="0.12" />
+                <rect x="40" y="540" width="440" height="24" rx="12" fill="none" stroke="#7189B8" stroke-width="1" opacity="0.5" />
+                <text x="260" y="556" text-anchor="middle" fill="#4A5F8C" font-family="Space Grotesk,sans-serif" font-size="9.5" font-weight="700">Agnóstico: cualquier herramienta vía MCP / API — HubSpot · Monday · Miro · … y más</text>
+
+                <!-- transversal + legend -->
+                <text x="260" y="584" text-anchor="middle" fill="#5B6472" font-family="Space Grotesk,sans-serif" font-size="9" font-style="italic">en todo el ciclo: Slack · MS Teams · Discord notifican</text>
+                <circle cx="120" cy="610" r="4.5" fill="#66862E" /><text x="130" y="613.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">ya conecta</text>
+                <circle cx="238" cy="610" r="4.5" fill="#4E93B0" /><text x="248" y="613.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">abierto / agnóstico</text>
+                <circle cx="382" cy="610" r="4.5" fill="#B86F24" /><text x="392" y="613.5" fill="#454F61" font-family="Space Grotesk,sans-serif" font-size="9.5">en roadmap</text>
               </svg>
             </figure>
           </article>
