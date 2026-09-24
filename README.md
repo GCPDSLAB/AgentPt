@@ -2,6 +2,8 @@
 
 Deck de propuesta y entendimiento sobre la implementación de agentes de IA en el ciclo de vida del desarrollo de software (SDLC), del Laboratorio de Inteligencia Artificial de la Universidad Nacional de Colombia sede Manizales.
 
+**Presentación en vivo: https://liaunal.github.io/AgentPt/**
+
 Este repositorio es únicamente para `index.html`.
 
 ## Qué es
