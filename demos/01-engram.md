@@ -1,6 +1,6 @@
 # Engram: Memoria persistente para agentes
 
-> Vas a experimentar cómo un agente de IA puede recordar decisiones entre sesiones usando Engram.
+> Vas a experimentar cómo un agente de <abbr title="Inteligencia Artificial">IA</abbr> puede recordar decisiones entre sesiones usando Engram.
 
 ## Prerequisitos
 
@@ -10,7 +10,7 @@
 
 ## Contexto
 
-Los agentes de IA son **stateless por defecto**. Cada vez que abrís una sesión nueva, el agente arranca de cero: no sabe qué decidiste ayer, qué convenciones definiste, ni qué bugs resolviste. Es como trabajar con un dev que tiene amnesia todos los días. Engram resuelve esto agregando una capa de memoria persistente que sobrevive entre sesiones, sin que tengas que repetirte.
+Los agentes de <abbr title="Inteligencia Artificial">IA</abbr> son **stateless por defecto**. Cada vez que abrís una sesión nueva, el agente arranca de cero: no sabe qué decidiste ayer, qué convenciones definiste, ni qué bugs resolviste. Es como trabajar con un dev que tiene amnesia todos los días. Engram resuelve esto agregando una capa de memoria persistente que sobrevive entre sesiones, sin que tengas que repetirte.
 
 ## Ejercicio
 
@@ -54,7 +54,7 @@ Qué arquitectura decidimos usar para este proyecto?
 
 Vas a ver que Claude hace `mem_context` + `mem_search` y recupera la decisión de Clean Architecture con las capas exactas. Sin Engram, esto se habría perdido al cerrar la terminal.
 
-### Paso 5: Verificar desde el CLI
+### Paso 5: Verificar desde el <abbr title="Command-Line Interface (interfaz de línea de comandos)">CLI</abbr>
 
 En otra terminal, probá la búsqueda directa:
 
@@ -62,7 +62,7 @@ En otra terminal, probá la búsqueda directa:
 engram search "arquitectura" --project stream-web
 ```
 
-Fijate que Engram tiene CLI propia. Podés buscar memorias sin abrir Claude Code. Por debajo es una base de datos SQLite con FTS5 (full-text search nativo).
+Fijate que Engram tiene <abbr title="Command-Line Interface (interfaz de línea de comandos)">CLI</abbr> propia. Podés buscar memorias sin abrir Claude Code. Por debajo es una base de datos SQLite con <abbr title="Full-Text Search version 5 (búsqueda de texto completo versión 5 (SQLite))">FTS5</abbr> (full-text search nativo).
 
 ## ¿Qué pasó?
 

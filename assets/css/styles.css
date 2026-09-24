@@ -432,6 +432,12 @@ p {
   line-height: 1.65;
 }
 
+abbr[title] {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+  cursor: help;
+}
+
 .slide-list {
   margin: 0;
   padding-left: 1.15em;
