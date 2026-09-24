@@ -394,6 +394,66 @@ body {
   letter-spacing: 0.08em;
 }
 
+/* ---------- Portada: equipo autoral ---------- */
+
+.cover-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(4px, 0.8vh, 10px);
+  width: min(880px, 100%);
+  font-size: clamp(0.8rem, 1.5vh, 0.98rem);
+}
+
+.cover-team-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--fg);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.78em;
+}
+
+.cover-team-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(6px, 1vh, 12px);
+  width: 100%;
+  text-align: left;
+}
+
+.cover-member {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: clamp(6px, 1vh, 10px) clamp(10px, 1.4vw, 16px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--gray0);
+}
+
+.cover-member-name {
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.25;
+}
+
+.cover-member-role {
+  color: var(--subtext1);
+  font-size: 0.86em;
+  line-height: 1.3;
+}
+
+.cover-member-degree {
+  color: var(--subtext1);
+  font-size: 0.86em;
+  font-style: italic;
+  line-height: 1.3;
+}
+
 .slide-content {
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -430,6 +490,12 @@ p {
   color: var(--subtext1);
   font-size: 1.08rem;
   line-height: 1.65;
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+  cursor: help;
 }
 
 .slide-list {
@@ -731,6 +797,10 @@ body.focus-mode .rail {
 
   .cover-meta {
     font-size: 0.86rem;
+  }
+
+  .cover-team-list {
+    grid-template-columns: 1fr;
   }
 }
 

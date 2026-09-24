@@ -1,4 +1,4 @@
-# Ejercicio: SDD — De idea a dashboard en minutos
+# Ejercicio: <abbr title="Spec-Driven Development (desarrollo guiado por especificaciones)">SDD</abbr> — De idea a dashboard en minutos
 
 > Vas a usar Spec-Driven Development para generar un dashboard de ciberseguridad completo desde cero. Sin escribir una línea de código manualmente.
 
@@ -11,7 +11,7 @@
 
 ## Contexto
 
-"Vibe coding" es tirarle un prompt al agente y rezar para que salga algo potable. A veces funciona, a veces te genera un Frankenstein de código que no podés mantener ni explicar. SDD es lo opuesto: en vez de "haceme un dashboard", pasás por un pipeline de ingeniería — explorar, proponer, especificar, diseñar, descomponer en tareas, implementar, verificar. Cada fase la ejecuta un sub-agente con contexto limpio que produce un artefacto revisable. El resultado no es "lo que al LLM se le cantó generar", sino código que cumple especificaciones concretas que vos definiste.
+"Vibe coding" es tirarle un prompt al agente y rezar para que salga algo potable. A veces funciona, a veces te genera un Frankenstein de código que no podés mantener ni explicar. <abbr title="Spec-Driven Development (desarrollo guiado por especificaciones)">Spec-Driven Development (SDD)</abbr> es lo opuesto: en vez de "haceme un dashboard", pasás por un pipeline de ingeniería — explorar, proponer, especificar, diseñar, descomponer en tareas, implementar, verificar. Cada fase la ejecuta un sub-agente con contexto limpio que produce un artefacto revisable. El resultado no es "lo que al <abbr title="Large Language Model (modelo de lenguaje grande)">Large Language Model (LLM)</abbr> se le cantó generar", sino código que cumple especificaciones concretas que vos definiste.
 
 ## Ejercicio
 
@@ -27,7 +27,7 @@ Cuando te pregunte de qué se trata, explicale:
 Quiero crear un dashboard de ciberseguridad en un solo archivo HTML con CSS y JS inline. Tema visual Kanagawa Blur (fondo #1A1B26, cards #24283B con glassmorphism). Debe tener: header con título "Security Dashboard" y badge de status verde, 4 cards de severidad (Critical rojo #F7768E, High naranja #FF9E64, Medium amarillo #DFBD76, Low azul #7AA2F7) con contadores animados, un gráfico de barras horizontal mostrando vulnerabilidades por provider (AWS, GCP, Azure), animaciones de entrada staggered, hover con glow, y la barra de status con pulse breathing. Data hardcodeada pero realista.
 ```
 
-Vas a ver que SDD lanza un Explorer que analiza los requerimientos y después un Proposer que genera una propuesta formal con scope, approach y rollback plan. Fijate que son dos sub-agentes distintos, cada uno con contexto fresco.
+Vas a ver que <abbr title="Spec-Driven Development (desarrollo guiado por especificaciones)">SDD</abbr> lanza un Explorer que analiza los requerimientos y después un Proposer que genera una propuesta formal con scope, approach y rollback plan. Fijate que son dos sub-agentes distintos, cada uno con contexto fresco.
 
 ### Paso 2: Generar especificaciones y diseño
 
@@ -41,7 +41,7 @@ Esto genera specs en formato Given/When/Then — lo que el dashboard DEBE cumpli
 /sdd-continue
 ```
 
-Ahora se genera el design: decisiones técnicas, estructura del archivo, patrones a usar. Specs y design pueden salir en cualquier orden porque son paralelas en el DAG de dependencias — eso es normal.
+Ahora se genera el design: decisiones técnicas, estructura del archivo, patrones a usar. Specs y design pueden salir en cualquier orden porque son paralelas en el <abbr title="Directed Acyclic Graph (grafo acíclico dirigido)">Directed Acyclic Graph (DAG)</abbr> de dependencias — eso es normal.
 
 ### Paso 3: Generar tareas
 
@@ -57,7 +57,7 @@ El Task Planner lee las specs + design y genera un plan de ejecución concreto: 
 /sdd-apply
 ```
 
-Recién ACÁ se escribe código. El Implementer arranca con contexto limpio, lee las tareas + specs + design, y genera el HTML/CSS/JS contra esos artefactos. No improvisa: implementa lo que se especificó.
+Recién ACÁ se escribe código. El Implementer arranca con contexto limpio, lee las tareas + specs + design, y genera el <abbr title="HyperText Markup Language (lenguaje de marcado de hipertexto)">HTML</abbr>/<abbr title="Cascading Style Sheets (hojas de estilo en cascada)">CSS</abbr>/<abbr title="JavaScript (lenguaje de programación del navegador)">JS</abbr> contra esos artefactos. No improvisa: implementa lo que se especificó.
 
 ### Paso 5: Verificar
 
@@ -91,4 +91,4 @@ idea → explore → proposal → specs + design → tasks → apply → verify
 ## Para pensar
 
 - ¿Qué fase atraparía la mayoría de los bugs ANTES de que lleguen a producción? ¿Por qué esa y no otra?
-- Si le pidieras este mismo dashboard a un chat sin SDD, ¿qué cosas podrían salir diferentes? ¿Qué se perdería?
+- Si le pidieras este mismo dashboard a un chat sin <abbr title="Spec-Driven Development (desarrollo guiado por especificaciones)">SDD</abbr>, ¿qué cosas podrían salir diferentes? ¿Qué se perdería?

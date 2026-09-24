@@ -5,7 +5,7 @@
 ## Prerequisitos
 
 - Claude Code con las reglas de delegación configuradas en `CLAUDE.md`
-- El proyecto `stream-web` clonado (o cualquier proyecto con archivos JS y CSS diferenciados)
+- El proyecto `stream-web` clonado (o cualquier proyecto con archivos <abbr title="JavaScript (lenguaje de programación del navegador)">JS</abbr> y <abbr title="Cascading Style Sheets (hojas de estilo en cascada)">CSS</abbr> diferenciados)
 
 ## Contexto
 
@@ -21,7 +21,7 @@ Necesito dos investigaciones independientes:
 2. Investigá cómo están organizados los estilos CSS — qué sistema de diseño usa, variables, breakpoints, y estructura de clases
 ```
 
-Fijate que el orquestador no investiga él mismo. Lanza DOS sub-agentes en paralelo porque son dominios completamente distintos: JS por un lado, CSS por otro. No hay dependencia entre los hallazgos.
+Fijate que el orquestador no investiga él mismo. Lanza DOS sub-agentes en paralelo porque son dominios completamente distintos: <abbr title="JavaScript (lenguaje de programación del navegador)">JS</abbr> por un lado, <abbr title="Cascading Style Sheets (hojas de estilo en cascada)">CSS</abbr> por otro. No hay dependencia entre los hallazgos.
 
 ### Paso 2: Observar la ejecución paralela
 
